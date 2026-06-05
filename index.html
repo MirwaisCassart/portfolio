@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mirwais Cassart | Portfolio Cyber & Réseaux</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="dark-theme">
+
+    <header class="header">
+        <a href="#" class="logo">MC<span>.</span></a>
+        <nav class="nav-bar">
+            <ul class="nav-links">
+                <li><a href="#home" class="active"><i class="fas fa-terminal"></i> Accueil</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-cta">
+            <a href="assets/cv-mirwais-cassart.pdf" class="btn-cv" download><i class="fas fa-download"></i> Mon CV</a>
+        </div>
+    </header>
+
+    <main class="main-container">
+        
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="badge"><i class="fas fa-shield-halved"></i> Disponible pour une alternance</div>
+                <h1 class="hero-title">Mirwais Cassart</h1>
+                <div class="animated-subtitle">
+                    <span class="typed-text"></span><span class="cursor">&nbsp;</span>
+                </div>
+                <p class="hero-description">
+                    Spécialiste en **infrastructure réseau** et **cybersécurité**. Je conçois, sécurise et supervise les systèmes d'information pour répondre aux défis numériques de demain.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="hero-btn primary">Explorer mes projets <i class="fas fa-arrow-right"></i></a>
+                    <a href="#contact" class="hero-btn secondary">Me contacter</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="tech-stack-floating">
+                    <div class="tech-icon" title="Linux"><i class="fab fa-linux"></i></div>
+                    <div class="tech-icon" title="Windows Server"><i class="fab fa-windows"></i></div>
+                    <div class="tech-icon" title="Cisco/Réseau"><i class="fas fa-network-wired"></i></div>
+                    <div class="tech-icon" title="Sécurité"><i class="fas fa-lock"></i></div>
+                </div>
+                <div class="network-grid"></div>
+            </div>
+        </section>
+
+        ---
+
+        <section id="about" class="intro-section">
+            <div class="section-header">
+                <span class="section-subtitle">01. Présentation</span>
+                <h2>À Propos de Moi</h2>
+            </div>
+            <div class="intro-grid">
+                <div class="intro-text">
+                    <p>Actuellement en <strong>BTS SIO option SISR</strong> (Solutions d'Infrastructure, de Systèmes et de Réseaux), je me passionne pour l'architecture des SI et la traque des vulnérabilités.</p>
+                    <p>Mon objectif ? Allier la robustesse des infrastructures systèmes à des politiques de sécurité "Zero Trust".</p>
+                </div>
+                <div class="intro-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-server"></i></div>
+                        <div class="stat-info">
+                            <h3>Infrastructure</h3>
+                            <p>Admin. Windows & Linux</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="stat-info">
+                            <h3>Sécurité</h3>
+                            <p>Surveillance & Durcissement</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-network-wired"></i></div>
+                        <div class="stat-info">
+                            <h3>Réseaux</h3>
+                            <p>Routage, VPN & Switching</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <section id="skills" class="specialties-section">
+            <div class="section-header">
+                <span class="section-subtitle">02. Expertise</span>
+                <h2>Domaines de Compétences</h2>
+            </div>
+            <div class="specialty-cards">
+                
+                <div class="specialty-card">
+                    <div class="card-glow"></div>
+                    <div class="specialty-icon"><i class="fas fa-route"></i></div>
+                    <h3>Infrastructure Réseau</h3>
+                    <p>Conception et maintien de la connectivité et des services critiques.</p>
+                    <ul class="specialty-details">
+                        <li><i class="fas fa-chevron-right"></i> Switchs & Routeurs (Cisco, Cisco Packet Tracer)</li>
+                        <li><i class="fas fa-chevron-right"></i> Services essentiels (DHCP, DNS, Active Directory)</li>
+                        <li><i class="fas fa-chevron-right"></i> Interconnexions sécurisées (VPN IPsec/OpenVPN)</li>
+                    </ul>
+                </div>
+
+                <div class="specialty-card featured">
+                    <div class="card-glow"></div>
+                    <div class="specialty-icon"><i class="fas fa-user-shield"></i></div>
+                    <h3>Cybersécurité</h3>
+                    <p>Protection des données, gestion des accès et conformité.</p>
+                    <ul class="specialty-details">
+                        <li><i class="fas fa-chevron-right"></i> Configuration Firewalls (PfSense, Stormshield)</li>
+                        <li><i class="fas fa-chevron-right"></i> Gestion des identités & RLS (Supabase)</li>
+                        <li><i class="fas fa-chevron-right"></i> Audits de configuration & Bonnes pratiques ANSSI</li>
+                    </ul>
+                </div>
+
+                <div class="specialty-card">
+                    <div class="card-glow"></div>
+                    <div class="specialty-icon"><i class="fas fa-sliders"></i></div>
+                    <h3>Admin & Supervision</h3>
+                    <p>Virtualisation et maintien en condition opérationnelle (MCO).</p>
+                    <ul class="specialty-details">
+                        <li><i class="fas fa-chevron-right"></i> Hyperviseurs (VMware ESXi, Hyper-V, Proxmox)</li>
+                        <li><i class="fas fa-chevron-right"></i> Supervision centralisée (Zabbix, SNMP)</li>
+                        <li><i class="fas fa-chevron-right"></i> Stratégies de sauvegarde (Veeam, Sauvegardes 3-2-1)</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        ---
+
+        <section id="projects" class="projects-preview">
+            <div class="section-header">
+                <span class="section-subtitle">03. Réalisations</span>
+                <h2>Projets Récents</h2>
+            </div>
+            <div class="project-preview-grid">
+                
+                <div class="preview-card project-highlight">
+                    <div class="project-tags"><span>Cloud</span><span>Supabase</span><span>Sécurité</span></div>
+                    <h3>Portail Collecte Cloud ERP</h3>
+                    <p>Interconnexion d'une interface web avec une base de données managée. Implémentation de politiques de sécurité strictes (Row Level Security - RLS) et d'un espace admin.</p>
+                    <div class="project-footer">
+                        <a href="https://comptabiliterp.github.io/comptabiliterp/" class="preview-link" target="_blank">
+                            Tester l'application <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="preview-card">
+                    <div class="project-tags"><span>SISR</span><span>GLPI</span></div>
+                    <h3>Gestion du Parc & Matériel</h3>
+                    <p>Déploiement d'une solution de gestion de parc informatique (type GLPI) pour automatiser l'inventaire et suivre le cycle de vie du matériel informatique.</p>
+                    <div class="project-footer">
+                        <a href="gestion-materiel.html" class="preview-link">Documentation <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="preview-card">
+                    <div class="project-tags"><span>Supervision</span><span>Zabbix</span></div>
+                    <h3>Infrastructure & Supervision</h3>
+                    <p>Mise en place d'une maquette réseau complète supervisée par Zabbix, avec alertes automatiques (Email/Discord) en cas de panne de service.</p>
+                    <div class="project-footer">
+                        <a href="zabbix.html" class="preview-link">Fiche technique <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="preview-card">
+                    <div class="project-tags"><span>Support</span><span>ITIL</span></div>
+                    <h3>Assistance Utilisateurs</h3>
+                    <p>Gestion des incidents et des demandes d'assistance. Rédaction de procédures techniques (base de connaissances) et support de niveau 1 et 2.</p>
+                    <div class="project-footer">
+                        <a href="assistance.html" class="preview-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        ---
+
+        <section id="contact" class="contact-section">
+            <div class="section-header" style="text-align: center;">
+                <span class="section-subtitle">04. Un projet ?</span>
+                <h2>Me Contacter</h2>
+                <p class="contact-intro">Je suis à la recherche d'opportunités en alternance ou de projets collaboratifs. Discutons-en !</p>
+            </div>
+            
+            <div class="contact-cards-container">
+                <a href="mailto:mirwais.cassart@outlook.com" class="contact-card-modern">
+                    <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-info-box">
+                        <span>Email</span>
+                        <strong>mirwais.cassart@outlook.com</strong>
+                    </div>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/mirwais-cassart-3a557930a/" class="contact-card-modern" target="_blank">
+                    <div class="contact-icon-box"><i class="fab fa-linkedin-in"></i></div>
+                    <div class="contact-info-box">
+                        <span>LinkedIn</span>
+                        <strong>Mon Profil Professionnel</strong>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-credits">
+        <p>© 2026 Mirwais Cassart. Conçu pour le réseau & la sécurité.</p>
+    </footer>
+
+    <script>
+        const typedTextSpan = document.querySelector(".typed-text");
+        const textArray = ["Expertise Réseaux & Systèmes", "Solutions Cybersécurité", "Étudiant BTS SIO (SISR)"];
+        let textNo = 0; let charIndex = 0;
+        
+        function type() {
+            if (charIndex < textArray[textNo].length) {
+                typedTextSpan.textContent += textArray[textNo].charAt(charIndex);
+                charIndex++; setTimeout(type, 80);
+            } else { setTimeout(erase, 2200); }
+        }
+        function erase() {
+            if (charIndex > 0) {
+                typedTextSpan.textContent = textArray[textNo].substring(0, charIndex-1);
+                charIndex--; setTimeout(erase, 40);
+            } else { textNo++; if(textNo>=textArray.length) textNo=0; setTimeout(type, 400); }
+        }
+        document.addEventListener("DOMContentLoaded", function() { setTimeout(type, 800); });
+    </script>
+</body>
+</html>
