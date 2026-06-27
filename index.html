@@ -1,254 +1,922 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mirwais Cassart | Portfolio Cyber & Réseaux</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mirwais Cassart | Administrateur Systèmes & Réseaux</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#08111d;
+--bg2:#0d1e30;
+--bg3:#0f2540;
+--card:#0d1e30;
+--card2:#112235;
+--blue:#1E88E5;
+--blue-light:#64B5F6;
+--blue-pale:#90CAF9;
+--cyan:#00BCD4;
+--text:#e2e8f0;
+--text-muted:#94a3b8;
+--border:#1a3050;
+--radius:12px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:3px}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,17,29,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--blue);text-decoration:none;letter-spacing:2px}
+.logo span{color:var(--cyan)}
+.nav{display:flex;gap:2rem;list-style:none}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.5px;transition:color .2s}
+.nav a:hover{color:var(--blue-light)}
+.nav-cta a{background:var(--blue);color:#fff;padding:.45rem 1.2rem;border-radius:6px;font-size:.85rem;font-weight:600;text-decoration:none;transition:background .2s}
+.nav-cta a:hover{background:#1565C0}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 2rem 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(30,136,229,.08) 0%,transparent 60%)}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(30,136,229,.1);border:1px solid rgba(30,136,229,.3);color:var(--blue-light);padding:.4rem 1rem;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:1.5rem}
+.badge i{font-size:.75rem}
+.hero-title{font-size:3.5rem;font-weight:800;line-height:1.1;margin-bottom:.5rem;letter-spacing:-1px}
+.hero-title span{background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.typed-wrap{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:1.1rem;margin-bottom:1.5rem;min-height:1.6em}
+.cursor{animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-desc{color:var(--text-muted);font-size:1rem;line-height:1.8;margin-bottom:2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{padding:.75rem 1.75rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:#1565C0;transform:translateY(-1px)}
+.btn-secondary{border:1px solid var(--border);color:var(--text-muted)}
+.btn-secondary:hover{border-color:var(--blue);color:var(--blue-light)}
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border)}
+.stat h3{font-size:1.8rem;font-weight:800;color:var(--blue-light)}
+.stat p{font-size:.8rem;color:var(--text-muted);font-weight:500}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;width:100%}
+.tech-card{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;text-align:center;transition:all .3s}
+.tech-card:hover{border-color:var(--blue);transform:translateY(-3px)}
+.tech-card i{font-size:1.8rem;color:var(--blue);margin-bottom:.5rem;display:block}
+.tech-card span{font-size:.75rem;color:var(--text-muted);font-weight:500}
+
+/* SECTIONS */
+section{padding:6rem 2rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:.8rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:.75rem;display:block}
+.section-title{font-size:2.2rem;font-weight:800;margin-bottom:1rem;letter-spacing:-.5px}
+.section-title span{color:var(--blue-light)}
+.section-desc{color:var(--text-muted);max-width:600px;line-height:1.8;margin-bottom:3rem}
+.divider{height:1px;background:linear-gradient(90deg,var(--blue),transparent);margin-bottom:4rem}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.about-text p{color:var(--text-muted);line-height:1.9;margin-bottom:1rem}
+.about-text strong{color:var(--blue-light)}
+.about-info{display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem}
+.info-row{display:flex;gap:1rem;align-items:center;color:var(--text-muted);font-size:.9rem}
+.info-row i{color:var(--blue);width:16px;text-align:center}
+.about-cards{display:flex;flex-direction:column;gap:1rem}
+.about-card{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;display:flex;gap:1rem;align-items:flex-start}
+.about-card-icon{width:40px;height:40px;background:rgba(30,136,229,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.about-card-icon i{color:var(--blue)}
+.about-card h4{font-size:.9rem;font-weight:600;margin-bottom:.25rem}
+.about-card p{color:var(--text-muted);font-size:.82rem;line-height:1.6}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--blue),transparent)}
+.tl-item{position:relative;padding-left:2.5rem;padding-bottom:3rem}
+.tl-item::before{content:'';position:absolute;left:-2.5rem;top:.3rem;width:10px;height:10px;background:var(--blue);border-radius:50%;border:2px solid var(--bg)}
+.tl-item.current::before{background:var(--cyan);box-shadow:0 0 0 4px rgba(0,188,212,.2)}
+.tl-date{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:.75rem;font-weight:500;letter-spacing:1px;margin-bottom:.4rem;display:block}
+.tl-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.5rem}
+.tl-title{font-size:1.05rem;font-weight:700;line-height:1.3}
+.tl-badge{font-size:.7rem;background:rgba(30,136,229,.15);border:1px solid rgba(30,136,229,.3);color:var(--blue-light);padding:.2rem .7rem;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.tl-badge.current{background:rgba(0,188,212,.15);border-color:rgba(0,188,212,.3);color:var(--cyan)}
+.tl-company{color:var(--blue-light);font-size:.85rem;font-weight:600;margin-bottom:.3rem}
+.tl-location{color:var(--text-muted);font-size:.8rem;margin-bottom:.75rem}
+.tl-location i{margin-right:.35rem}
+.tl-context{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;margin-bottom:.75rem;font-size:.82rem;color:var(--text-muted)}
+.tl-context strong{color:var(--blue-pale)}
+.tl-list{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.tl-list li{color:var(--text-muted);font-size:.85rem;padding-left:1.25rem;position:relative;line-height:1.6}
+.tl-list li::before{content:'▸';position:absolute;left:0;color:var(--blue);font-size:.7rem;top:.1rem}
+.tl-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+.tag{font-family:'JetBrains Mono',monospace;font-size:.7rem;background:rgba(30,136,229,.1);border:1px solid rgba(30,136,229,.2);color:var(--blue-pale);padding:.2rem .6rem;border-radius:4px}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.edu-card{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;transition:border-color .2s}
+.edu-card:hover{border-color:var(--blue)}
+.edu-icon{width:44px;height:44px;background:rgba(30,136,229,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.edu-icon i{color:var(--blue);font-size:1.2rem}
+.edu-level{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:.7rem;letter-spacing:1px;margin-bottom:.25rem;display:block}
+.edu-title{font-size:1rem;font-weight:700;margin-bottom:.25rem}
+.edu-school{color:var(--blue-light);font-size:.85rem;font-weight:600;margin-bottom:.25rem}
+.edu-dates{color:var(--text-muted);font-size:.8rem;margin-bottom.75rem}
+.edu-details{margin-top:1rem;border-top:1px solid var(--border);padding-top:.75rem}
+.edu-details p{color:var(--text-muted);font-size:.82rem;line-height:1.7}
+.mention{display:inline-flex;align-items:center;gap:.3rem;background:rgba(0,188,212,.1);border:1px solid rgba(0,188,212,.25);color:var(--cyan);padding:.2rem .65rem;border-radius:20px;font-size:.72rem;font-weight:600;margin-top:.5rem}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.skill-group{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem}
+.skill-group-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.skill-group-icon{width:36px;height:36px;background:rgba(30,136,229,.1);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.skill-group-icon i{color:var(--blue);font-size:.9rem}
+.skill-group h3{font-size:.9rem;font-weight:700;letter-spacing:.3px}
+.skill-item{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.85rem}
+.skill-row{display:flex;justify-content:space-between;align-items:center}
+.skill-name{font-size:.82rem;color:var(--text);font-weight:500}
+.skill-level{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-muted)}
+.skill-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:2px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.skill-tag{font-size:.75rem;background:rgba(30,136,229,.08);border:1px solid var(--border);color:var(--text-muted);padding:.25rem .6rem;border-radius:4px}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem}
+.project-card{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;transition:all .3s;display:flex;flex-direction:column}
+.project-card:hover{border-color:var(--blue);transform:translateY(-3px)}
+.project-card.featured{border-color:rgba(0,188,212,.4);background:linear-gradient(135deg,var(--card2),rgba(0,188,212,.03))}
+.project-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+.project-icon{width:42px;height:42px;background:rgba(30,136,229,.1);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.project-icon i{color:var(--blue);font-size:1.1rem}
+.project-featured-badge{font-size:.68rem;background:rgba(0,188,212,.15);border:1px solid rgba(0,188,212,.3);color:var(--cyan);padding:.2rem .65rem;border-radius:20px;font-weight:600}
+.project-title{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.project-desc{color:var(--text-muted);font-size:.85rem;line-height:1.7;flex:1;margin-bottom:1rem}
+.project-missions{margin-bottom:1rem}
+.project-missions h4{font-size:.78rem;color:var(--text-muted);font-weight:600;letter-spacing:.5px;margin-bottom:.5rem;text-transform:uppercase}
+.project-missions ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.project-missions li{font-size:.82rem;color:var(--text-muted);padding-left:1rem;position:relative}
+.project-missions li::before{content:'→';position:absolute;left:0;color:var(--blue);font-size:.7rem}
+.project-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:1rem;border-top:1px solid var(--border)}
+.project-link{color:var(--blue-light);font-size:.82rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:color .2s}
+.project-link:hover{color:var(--cyan)}
+
+/* SOFT SKILLS */
+.soft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.soft-card{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center}
+.soft-score{font-size:2rem;font-weight:800;color:var(--blue-light);margin-bottom:.25rem}
+.soft-score span{font-size:1rem;color:var(--text-muted);font-weight:400}
+.soft-label{font-size:.85rem;font-weight:600;margin-bottom:.5rem}
+.soft-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden}
+.soft-fill{height:100%;border-radius:3px}
+.soft-level{font-size:.75rem;color:var(--text-muted);margin-top:.5rem}
+
+/* LANGUAGES */
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.lang-card{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;display:flex;align-items:center;gap:1rem}
+.lang-flag{font-size:1.8rem}
+.lang-info h4{font-size:.9rem;font-weight:700;margin-bottom:.2rem}
+.lang-info p{color:var(--text-muted);font-size:.8rem}
+.lang-level{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--cyan);font-weight:600}
+
+/* INTERESTS */
+.interests-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
+.interest-card{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;text-align:center;transition:border-color .2s}
+.interest-card:hover{border-color:var(--blue)}
+.interest-card i{font-size:1.8rem;color:var(--blue);margin-bottom:.75rem;display:block}
+.interest-card h4{font-size:.85rem;font-weight:600;margin-bottom:.25rem}
+.interest-card p{color:var(--text-muted);font-size:.78rem}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.contact-text p{color:var(--text-muted);line-height:1.9;margin-bottom:1.5rem}
+.contact-links{display:flex;flex-direction:column;gap:1rem}
+.contact-link{display:flex;align-items:center;gap:1rem;background:var(--card2);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;transition:border-color .2s}
+.contact-link:hover{border-color:var(--blue)}
+.contact-link-icon{width:40px;height:40px;background:rgba(30,136,229,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-link-icon i{color:var(--blue)}
+.contact-link-info span{display:block;font-size:.75rem;color:var(--text-muted);margin-bottom:.15rem}
+.contact-link-info strong{font-size:.88rem;color:var(--text)}
+.availability{background:linear-gradient(135deg,rgba(30,136,229,.1),rgba(0,188,212,.05));border:1px solid rgba(30,136,229,.3);border-radius:var(--radius);padding:2rem}
+.avail-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.avail-dot{width:10px;height:10px;background:var(--cyan);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,188,212,.4)}50%{box-shadow:0 0 0 8px transparent}}
+.avail-header h3{font-size:1rem;font-weight:700}
+.avail-details{display:flex;flex-direction:column;gap:.75rem}
+.avail-row{display:flex;align-items:center;gap:.75rem;color:var(--text-muted);font-size:.85rem}
+.avail-row i{color:var(--blue);width:16px;text-align:center}
+.avail-row strong{color:var(--text)}
+
+/* FOOTER */
+footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:.82rem}
+footer span{color:var(--blue-light)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.hero-inner,.about-grid,.contact-grid{grid-template-columns:1fr}
+.hero-visual{display:none}
+.soft-grid{grid-template-columns:repeat(2,1fr)}
+.nav{display:none}
+}
+</style>
 </head>
-<body class="dark-theme">
+<body>
 
-    <header class="header">
-        <a href="#" class="logo">MC<span>.</span></a>
-        <nav class="nav-bar">
-            <ul class="nav-links">
-                <li><a href="#home" class="active"><i class="fas fa-terminal"></i> Accueil</a></li>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#skills">Compétences</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="nav-cta">
-            <a href="assets/cv-mirwais-cassart.pdf" class="btn-cv" download><i class="fas fa-download"></i> Mon CV</a>
-        </div>
-    </header>
+<!-- HEADER -->
+<header class="header">
+<div class="header-inner">
+<a href="#" class="logo">MC<span>.</span></a>
+<nav>
+<ul class="nav">
+<li><a href="#about">À propos</a></li>
+<li><a href="#experience">Expérience</a></li>
+<li><a href="#education">Formation</a></li>
+<li><a href="#skills">Compétences</a></li>
+<li><a href="#projects">Projets</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+<div class="nav-cta">
+<a href="assets/cv-mirwais-cassart.pdf" download><i class="fas fa-download"></i> Mon CV</a>
+</div>
+</div>
+</header>
 
-    <main class="main-container">
-        
-        <section id="home" class="hero-section">
-            <div class="hero-content">
-                <div class="badge"><i class="fas fa-shield-halved"></i> Disponible pour une alternance</div>
-                <h1 class="hero-title">Mirwais Cassart</h1>
-                <div class="animated-subtitle">
-                    <span class="typed-text"></span><span class="cursor">&nbsp;</span>
-                </div>
-                <p class="hero-description">
-                    Spécialiste en **infrastructure réseau** et **cybersécurité**. Je conçois, sécurise et supervise les systèmes d'information pour répondre aux défis numériques de demain.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="hero-btn primary">Explorer mes projets <i class="fas fa-arrow-right"></i></a>
-                    <a href="#contact" class="hero-btn secondary">Me contacter</a>
-                </div>
-            </div>
-            
-            <div class="hero-visual">
-                <div class="tech-stack-floating">
-                    <div class="tech-icon" title="Linux"><i class="fab fa-linux"></i></div>
-                    <div class="tech-icon" title="Windows Server"><i class="fab fa-windows"></i></div>
-                    <div class="tech-icon" title="Cisco/Réseau"><i class="fas fa-network-wired"></i></div>
-                    <div class="tech-icon" title="Sécurité"><i class="fas fa-lock"></i></div>
-                </div>
-                <div class="network-grid"></div>
-            </div>
-        </section>
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="hero-inner">
+<div>
+<div class="badge"><i class="fas fa-circle" style="color:var(--cyan);font-size:.5rem"></i> Disponible pour une alternance — Octobre 2026</div>
+<h1 class="hero-title">Mirwais<br><span>Cassart</span></h1>
+<div class="typed-wrap"><span id="typed"></span><span class="cursor">|</span></div>
+<p class="hero-desc">Diplômé BTS SIO option SISR, je conçois, sécurise et supervise des infrastructures systèmes et réseaux. Passionné par la cybersécurité et l'automatisation, je cherche une alternance pour continuer à progresser dans un environnement exigeant.</p>
+<div class="hero-btns">
+<a href="#projects" class="btn btn-primary"><i class="fas fa-folder-open"></i> Mes projets</a>
+<a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Me contacter</a>
+<a href="https://www.linkedin.com/in/mirwaiscassart/" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+</div>
+<div class="hero-stats">
+<div class="stat"><h3>7+</h3><p>Expériences terrain</p></div>
+<div class="stat"><h3>5</h3><p>Environnements IT</p></div>
+<div class="stat"><h3>2</h3><p>Diplômes obtenus</p></div>
+</div>
+</div>
+<div class="hero-visual">
+<div class="tech-grid">
+<div class="tech-card"><i class="fas fa-server"></i><span>Windows Server</span></div>
+<div class="tech-card"><i class="fas fa-network-wired"></i><span>Active Directory</span></div>
+<div class="tech-card"><i class="fas fa-shield-halved"></i><span>Cybersécurité</span></div>
+<div class="tech-card"><i class="fas fa-eye"></i><span>Zabbix</span></div>
+<div class="tech-card"><i class="fab fa-linux"></i><span>Linux Ubuntu</span></div>
+<div class="tech-card"><i class="fas fa-hdd"></i><span>NAS Synology</span></div>
+<div class="tech-card"><i class="fas fa-cube"></i><span>VMware</span></div>
+<div class="tech-card"><i class="fas fa-terminal"></i><span>PowerShell</span></div>
+<div class="tech-card"><i class="fab fa-python"></i><span>Python</span></div>
+</div>
+</div>
+</div>
+</section>
 
-        ---
+<!-- ABOUT -->
+<section id="about" style="background:var(--bg2)">
+<div class="section-inner">
+<span class="section-label">01. Présentation</span>
+<h2 class="section-title">À propos <span>de moi</span></h2>
+<div class="about-grid">
+<div>
+<div class="about-text">
+<p>Diplômé d'un <strong>BTS SIO option SISR</strong> au Lycée Henri Wallon de Maubeuge, je me spécialise dans l'administration des systèmes et réseaux, la cybersécurité et la supervision d'infrastructures.</p>
+<p>Mes deux stages chez <strong>APEI – Les Papillons Blancs</strong> m'ont permis d'intervenir sur des environnements réels (349 postes, 12 serveurs, équipe IT de 2) où j'ai pris en charge des missions allant du support N1/N2 jusqu'au durcissement de l'Active Directory, au déploiement MFA et à la conception d'un Plan de Reprise d'Activité.</p>
+<p>En parallèle, ma mission de <strong>médiateur numérique chez Efficience</strong> renforce mon sens du service et ma capacité à vulgariser des concepts techniques pour des publics non initiés.</p>
+<p>Je recherche une <strong>alternance en administration systèmes & réseaux</strong> pour intégrer le Bachelor Administrateur Systèmes, Réseaux & SecOps à l'<strong>IPSSI de Lille</strong> en octobre 2026 (rythme : 3 semaines entreprise / 1 semaine école).</p>
+<div class="about-info">
+<div class="info-row"><i class="fas fa-map-marker-alt"></i><span>Maubeuge / Lille, Hauts-de-France</span></div>
+<div class="info-row"><i class="fas fa-envelope"></i><span>mirwais.cassart@gmail.com</span></div>
+<div class="info-row"><i class="fas fa-phone"></i><span>07 82 59 85 15</span></div>
+<div class="info-row"><i class="fas fa-car"></i><span>Permis B — Véhiculé</span></div>
+<div class="info-row"><i class="fas fa-globe"></i><span>mirwaiscassart.fr</span></div>
+</div>
+</div>
+</div>
+<div class="about-cards">
+<div class="about-card">
+<div class="about-card-icon"><i class="fas fa-bullseye"></i></div>
+<div><h4>Objectif alternance</h4><p>Bachelor Administrateur Systèmes & Réseaux / SecOps — IPSSI Lille — Octobre 2026. Rythme 3 semaines entreprise / 1 semaine école.</p></div>
+</div>
+<div class="about-card">
+<div class="about-card-icon"><i class="fas fa-shield-halved"></i></div>
+<div><h4>Spécialisation SecOps</h4><p>Durcissement AD, GPO, MFA, audit sécurité, conformité ANSSI, gestion des accès et supervision proactive via Zabbix.</p></div>
+</div>
+<div class="about-card">
+<div class="about-card-icon"><i class="fas fa-graduation-cap"></i></div>
+<div><h4>Parcours cohérent</h4><p>Bac Pro SN (RISC) → BTS SIO SISR → Bachelor Admin Sys/Réseaux. Un fil conducteur systèmes & réseaux depuis 2020.</p></div>
+</div>
+<div class="about-card">
+<div class="about-card-icon"><i class="fas fa-users"></i></div>
+<div><h4>Profil hybride</h4><p>Technicité IT + qualités relationnelles fortes (communication 18/20, empathie 18/20). À l'aise autant en salle serveurs qu'avec les utilisateurs.</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-        <section id="about" class="intro-section">
-            <div class="section-header">
-                <span class="section-subtitle">01. Présentation</span>
-                <h2>À Propos de Moi</h2>
-            </div>
-            <div class="intro-grid">
-                <div class="intro-text">
-                    <p>Actuellement en <strong>BTS SIO option SISR</strong> (Solutions d'Infrastructure, de Systèmes et de Réseaux), je me passionne pour l'architecture des SI et la traque des vulnérabilités.</p>
-                    <p>Mon objectif ? Allier la robustesse des infrastructures systèmes à des politiques de sécurité "Zero Trust".</p>
-                </div>
-                <div class="intro-stats">
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fas fa-server"></i></div>
-                        <div class="stat-info">
-                            <h3>Infrastructure</h3>
-                            <p>Admin. Windows & Linux</p>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div class="stat-info">
-                            <h3>Sécurité</h3>
-                            <p>Surveillance & Durcissement</p>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-icon"><i class="fas fa-network-wired"></i></div>
-                        <div class="stat-info">
-                            <h3>Réseaux</h3>
-                            <p>Routage, VPN & Switching</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- EXPERIENCE -->
+<section id="experience">
+<div class="section-inner">
+<span class="section-label">02. Parcours professionnel</span>
+<h2 class="section-title">Expériences <span>& Stages</span></h2>
+<p class="section-desc">7 expériences terrain dans des environnements variés — informatique, télécoms, industrie nucléaire, transport ferroviaire, médico-social et inclusion numérique.</p>
 
-        ---
+<div class="timeline">
 
-        <section id="skills" class="specialties-section">
-            <div class="section-header">
-                <span class="section-subtitle">02. Expertise</span>
-                <h2>Domaines de Compétences</h2>
-            </div>
-            <div class="specialty-cards">
-                
-                <div class="specialty-card">
-                    <div class="card-glow"></div>
-                    <div class="specialty-icon"><i class="fas fa-route"></i></div>
-                    <h3>Infrastructure Réseau</h3>
-                    <p>Conception et maintien de la connectivité et des services critiques.</p>
-                    <ul class="specialty-details">
-                        <li><i class="fas fa-chevron-right"></i> Switchs & Routeurs (Cisco, Cisco Packet Tracer)</li>
-                        <li><i class="fas fa-chevron-right"></i> Services essentiels (DHCP, DNS, Active Directory)</li>
-                        <li><i class="fas fa-chevron-right"></i> Interconnexions sécurisées (VPN IPsec/OpenVPN)</li>
-                    </ul>
-                </div>
+<!-- Efficience -->
+<div class="tl-item current">
+<span class="tl-date">AVRIL 2026 — AUJOURD'HUI</span>
+<div class="tl-header">
+<div class="tl-title">Médiateur numérique – Service civique</div>
+<span class="tl-badge current">En cours</span>
+</div>
+<div class="tl-company">Efficience Solidaire & Créative</div>
+<div class="tl-location"><i class="fas fa-map-marker-alt"></i>Maubeuge, Hauts-de-France · Sur site</div>
+<div class="tl-context"><strong>Contexte :</strong> Tiers-lieu numérique de proximité soutenu par les fonds européens FEDER, accompagnement à l'inclusion numérique de publics en fragilité (demandeurs d'emploi, seniors, personnes en situation précaire).</div>
+<ul class="tl-list">
+<li>Diagnostiqué et résolu pannes matérielles et logicielles (Windows, Android, iOS) auprès de publics variés</li>
+<li>Accompagné les usagers dans leurs démarches administratives en ligne (CAF, France Travail, Ameli, impots.gouv.fr)</li>
+<li>Animé des ateliers thématiques : web, réseaux sociaux, e-réputation, initiation au code, cybersécurité du quotidien</li>
+<li>Sensibilisé des publics variés aux bonnes pratiques de sécurité numérique et à la protection des données</li>
+<li>Créé des supports pédagogiques adaptés au niveau de chaque utilisateur</li>
+<li>Vulgarisé des concepts techniques complexes pour des publics non initiés</li>
+<li>Collaboré avec une équipe pluridisciplinaire (coachs insertion, travailleurs sociaux, partenaires institutionnels)</li>
+</ul>
+<div class="tl-tags"><span class="tag">Support N1</span><span class="tag">Médiation numérique</span><span class="tag">Formation</span><span class="tag">Cybersécurité</span><span class="tag">Windows</span><span class="tag">Android</span><span class="tag">iOS</span></div>
+</div>
 
-                <div class="specialty-card featured">
-                    <div class="card-glow"></div>
-                    <div class="specialty-icon"><i class="fas fa-user-shield"></i></div>
-                    <h3>Cybersécurité</h3>
-                    <p>Protection des données, gestion des accès et conformité.</p>
-                    <ul class="specialty-details">
-                        <li><i class="fas fa-chevron-right"></i> Configuration Firewalls (PfSense, Stormshield)</li>
-                        <li><i class="fas fa-chevron-right"></i> Gestion des identités & RLS (Supabase)</li>
-                        <li><i class="fas fa-chevron-right"></i> Audits de configuration & Bonnes pratiques ANSSI</li>
-                    </ul>
-                </div>
+<!-- APEI Stage 2 -->
+<div class="tl-item">
+<span class="tl-date">DÉCEMBRE 2024 — FÉVRIER 2025 · 3 mois</span>
+<div class="tl-header">
+<div class="tl-title">Stagiaire Administrateur Systèmes et Réseaux</div>
+<span class="tl-badge">Stage BTS — 2ème année</span>
+</div>
+<div class="tl-company">APEI – Les Papillons Blancs de Maubeuge</div>
+<div class="tl-location"><i class="fas fa-map-marker-alt"></i>Maubeuge, Hauts-de-France · Sur site</div>
+<div class="tl-context"><strong>Contexte :</strong> Association médico-sociale (349 postes, 12 serveurs, équipe IT de 2 personnes). Stage de 2ème année axé SecOps et automatisation, mené avec plus d'autonomie.</div>
+<ul class="tl-list">
+<li>Administré et durci l'Active Directory : GPO critiques, déploiement MFA, gestion des rôles et mappages de dossiers</li>
+<li>Développé des scripts PowerShell pour la création automatisée des utilisateurs et arborescences de dossiers</li>
+<li>Déployé un serveur Zabbix sur Raspberry Pi pour superviser le DHCP/DNS et centraliser les logs sur NAS</li>
+<li>Configuré DHCP, DNS et point d'accès Wi-Fi sur l'infrastructure réseau</li>
+<li>Conçu et mis en œuvre un Plan de Reprise d'Activité (PRA) avec sauvegardes automatisées sur NAS Synology RS422+</li>
+<li>Rédigé la documentation technique complète des configurations et procédures</li>
+<li>Assuré le support N1/N2 et la sécurisation des comptes utilisateurs</li>
+</ul>
+<div class="tl-tags"><span class="tag">Active Directory</span><span class="tag">GPO</span><span class="tag">MFA</span><span class="tag">PowerShell</span><span class="tag">Zabbix</span><span class="tag">Raspberry Pi</span><span class="tag">DHCP</span><span class="tag">DNS</span><span class="tag">NAS Synology</span><span class="tag">PRA</span><span class="tag">Windows Server</span></div>
+</div>
 
-                <div class="specialty-card">
-                    <div class="card-glow"></div>
-                    <div class="specialty-icon"><i class="fas fa-sliders"></i></div>
-                    <h3>Admin & Supervision</h3>
-                    <p>Virtualisation et maintien en condition opérationnelle (MCO).</p>
-                    <ul class="specialty-details">
-                        <li><i class="fas fa-chevron-right"></i> Hyperviseurs (VMware ESXi, Hyper-V, Proxmox)</li>
-                        <li><i class="fas fa-chevron-right"></i> Supervision centralisée (Zabbix, SNMP)</li>
-                        <li><i class="fas fa-chevron-right"></i> Stratégies de sauvegarde (Veeam, Sauvegardes 3-2-1)</li>
-                    </ul>
-                </div>
+<!-- APEI Stage 1 -->
+<div class="tl-item">
+<span class="tl-date">MAI 2024 — JUIN 2024 · 2 mois</span>
+<div class="tl-header">
+<div class="tl-title">Stagiaire Administrateur Systèmes et Réseaux</div>
+<span class="tl-badge">Stage BTS — 1ère année</span>
+</div>
+<div class="tl-company">APEI – Les Papillons Blancs de Maubeuge</div>
+<div class="tl-location"><i class="fas fa-map-marker-alt"></i>Maubeuge, Hauts-de-France · Sur site</div>
+<div class="tl-context"><strong>Contexte :</strong> Même environnement (349 postes, 12 serveurs, équipe IT de 2). Premier stage BTS axé sur l'infrastructure, le déploiement et le support de proximité.</div>
+<ul class="tl-list">
+<li>Assuré le support N1/N2 : pannes matérielles, logicielles et réseau auprès des utilisateurs</li>
+<li>Installé et configuré postes de travail, serveurs et périphériques (imprimantes, scanners, vidéoprojecteurs)</li>
+<li>Amélioré les postes existants (ajout RAM, remplacement composants)</li>
+<li>Déployé des postes via DeploymentWorkbench (MDT) pour automatiser les installations</li>
+<li>Installé et configuré un NAS Synology RS422+ : RAID, dossiers partagés, sauvegardes automatisées</li>
+<li>Réalisé l'inventaire du parc réseau sous Excel (serveurs et équipements)</li>
+<li>Administré les utilisateurs et politiques de sécurité sur Active Directory</li>
+</ul>
+<div class="tl-tags"><span class="tag">Support N1/N2</span><span class="tag">MDT</span><span class="tag">NAS Synology</span><span class="tag">Active Directory</span><span class="tag">Windows Server</span><span class="tag">RAID</span><span class="tag">Inventaire</span></div>
+</div>
 
-            </div>
-        </section>
+<!-- PC Crash 2 -->
+<div class="tl-item">
+<span class="tl-date">SEPTEMBRE — OCTOBRE 2022 · 1 mois</span>
+<div class="tl-header">
+<div class="tl-title">Stagiaire Technicien Informatique</div>
+<span class="tl-badge">Stage Bac Pro</span>
+</div>
+<div class="tl-company">PC Crash</div>
+<div class="tl-location"><i class="fas fa-map-marker-alt"></i>Louvroil, Hauts-de-France · Sur site</div>
+<div class="tl-context"><strong>Contexte :</strong> Boutique de dépannage et support informatique de proximité, interventions chez les particuliers et professionnels du secteur Maubeuge/Louvroil.</div>
+<ul class="tl-list">
+<li>Intervenu à domicile chez des particuliers et professionnels : dépannage PC, imprimantes, connexion internet, suppression de virus</li>
+<li>Diagnostiqué et résolu pannes matérielles et logicielles sur site et à distance</li>
+<li>Assuré conseil et vente de matériel informatique en boutique</li>
+</ul>
+<div class="tl-tags"><span class="tag">Support à domicile</span><span class="tag">Dépannage</span><span class="tag">Relation client</span><span class="tag">Maintenance</span></div>
+</div>
 
-        ---
+<!-- PC Crash 1 -->
+<div class="tl-item">
+<span class="tl-date">JUIN — JUILLET 2022 · 2 mois</span>
+<div class="tl-header">
+<div class="tl-title">Stagiaire Technicien Informatique</div>
+<span class="tl-badge">Stage Bac Pro</span>
+</div>
+<div class="tl-company">PC Crash</div>
+<div class="tl-location"><i class="fas fa-map-marker-alt"></i>Louvroil, Hauts-de-France · Sur site</div>
+<ul class="tl-list">
+<li>Créé une base de données SQL pour la gestion de l'inventaire du parc informatique</li>
+<li>Conseillé et vendu du matériel informatique en boutique</li>
+<li>Diagnostiqué et résolu tout type de panne matérielle et logicielle</li>
+</ul>
+<div class="tl-tags"><span class="tag">SQL</span><span class="tag">Inventaire</span><span class="tag">Support</span><span class="tag">Vente</span></div>
+</div>
 
-        <section id="projects" class="projects-preview">
-            <div class="section-header">
-                <span class="section-subtitle">03. Réalisations</span>
-                <h2>Projets Récents</h2>
-            </div>
-            <div class="project-preview-grid">
-                
-                <div class="preview-card project-highlight">
-                    <div class="project-tags"><span>Cloud</span><span>Supabase</span><span>Sécurité</span></div>
-                    <h3>Portail Collecte Cloud ERP</h3>
-                    <p>Interconnexion d'une interface web avec une base de données managée. Implémentation de politiques de sécurité strictes (Row Level Security - RLS) et d'un espace admin.</p>
-                    <div class="project-footer">
-                        <a href="https://comptabiliterp.github.io/comptabiliterp/" class="preview-link" target="_blank">
-                            Tester l'application <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
+<!-- Lyreco -->
+<div class="tl-item">
+<span class="tl-date">DÉCEMBRE 2021 · 1 mois</span>
+<div class="tl-header">
+<div class="tl-title">Stagiaire Support Informatique</div>
+<span class="tl-badge">Stage Bac Pro</span>
+</div>
+<div class="tl-company">Lyreco France</div>
+<div class="tl-location"><i class="fas fa-map-marker-alt"></i>Marly, Hauts-de-France · Sur site</div>
+<div class="tl-context"><strong>Contexte :</strong> Leader européen de la distribution de fournitures professionnelles, siège France basé à Marly.</div>
+<ul class="tl-list">
+<li>Assuré le support informatique N1/N2 auprès des collaborateurs du siège</li>
+<li>Géré les tickets incidents : création, suivi et résolution</li>
+<li>Remplacé le matériel défectueux (écrans, souris, périphériques)</li>
+<li>Sensibilisé les utilisateurs aux bonnes pratiques de sécurité informatique</li>
+<li>Coordonné avec les fournisseurs pour l'approvisionnement en matériel</li>
+</ul>
+<div class="tl-tags"><span class="tag">Support N1/N2</span><span class="tag">Tickets</span><span class="tag">Helpdesk</span><span class="tag">Microsoft 365</span><span class="tag">Windows</span></div>
+</div>
 
-                <div class="preview-card">
-                    <div class="project-tags"><span>SISR</span><span>GLPI</span></div>
-                    <h3>Gestion du Parc & Matériel</h3>
-                    <p>Déploiement d'une solution de gestion de parc informatique (type GLPI) pour automatiser l'inventaire et suivre le cycle de vie du matériel informatique.</p>
-                    <div class="project-footer">
-                        <a href="gestion-materiel.html" class="preview-link">Documentation <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+<!-- Framatome -->
+<div class="tl-item">
+<span class="tl-date">MAI — JUIN 2021 · 2 mois</span>
+<div class="tl-header">
+<div class="tl-title">Stagiaire Maintenance Industrielle</div>
+<span class="tl-badge">Stage Bac Pro</span>
+</div>
+<div class="tl-company">Framatome</div>
+<div class="tl-location"><i class="fas fa-map-marker-alt"></i>Jeumont, Hauts-de-France · Sur site</div>
+<div class="tl-context"><strong>Contexte :</strong> Site industriel nucléaire spécialisé dans la fabrication de composants pour réacteurs (groupe EDF). Environnement critique avec protocoles de sécurité stricts.</div>
+<ul class="tl-list">
+<li>Effectué des rondes de maintenance préventive sur l'ensemble du site industriel</li>
+<li>Contrôlé les températures et états des équipements et machines</li>
+<li>Respecté les protocoles de sécurité stricts en environnement nucléaire industriel</li>
+</ul>
+<div class="tl-tags"><span class="tag">Maintenance préventive</span><span class="tag">Environnement industriel</span><span class="tag">Sécurité</span></div>
+</div>
 
-                <div class="preview-card">
-                    <div class="project-tags"><span>Supervision</span><span>Zabbix</span></div>
-                    <h3>Infrastructure & Supervision</h3>
-                    <p>Mise en place d'une maquette réseau complète supervisée par Zabbix, avec alertes automatiques (Email/Discord) en cas de panne de service.</p>
-                    <div class="project-footer">
-                        <a href="zabbix.html" class="preview-link">Fiche technique <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+<!-- SNCF -->
+<div class="tl-item">
+<span class="tl-date">JANVIER 2021 · 1 mois</span>
+<div class="tl-header">
+<div class="tl-title">Stagiaire Maintenance Télécoms</div>
+<span class="tl-badge">Stage Bac Pro</span>
+</div>
+<div class="tl-company">SNCF Réseau</div>
+<div class="tl-location"><i class="fas fa-map-marker-alt"></i>Aulnoye-Aymeries, Hauts-de-France · Sur site</div>
+<div class="tl-context"><strong>Contexte :</strong> Acteur majeur du transport ferroviaire français. Maintenance des équipements télécoms en gare et sur les quais.</div>
+<ul class="tl-list">
+<li>Participé à la maintenance des équipements télécoms en environnement ferroviaire critique</li>
+<li>Accompagné les équipes techniques dans leurs interventions quotidiennes en gare et sur les quais</li>
+<li>Découvert les enjeux de continuité de service et de sécurité des réseaux en environnement critique</li>
+</ul>
+<div class="tl-tags"><span class="tag">Maintenance télécoms</span><span class="tag">Réseaux</span><span class="tag">Environnement critique</span></div>
+</div>
 
-                <div class="preview-card">
-                    <div class="project-tags"><span>Support</span><span>ITIL</span></div>
-                    <h3>Assistance Utilisateurs</h3>
-                    <p>Gestion des incidents et des demandes d'assistance. Rédaction de procédures techniques (base de connaissances) et support de niveau 1 et 2.</p>
-                    <div class="project-footer">
-                        <a href="assistance.html" class="preview-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+</div>
+</div>
+</section>
 
-            </div>
-        </section>
+<!-- EDUCATION -->
+<section id="education" style="background:var(--bg2)">
+<div class="section-inner">
+<span class="section-label">03. Formation</span>
+<h2 class="section-title">Parcours <span>académique</span></h2>
+<p class="section-desc">Un fil conducteur systèmes numériques depuis 2020, avec une progression logique vers la spécialisation SecOps.</p>
+<div class="edu-grid">
 
-        ---
+<div class="edu-card" style="border-color:rgba(0,188,212,.4)">
+<div class="edu-icon"><i class="fas fa-university"></i></div>
+<span class="edu-level">EN COURS — BACHELOR BAC+3</span>
+<div class="edu-title">Administrateur Systèmes, Réseaux & SecOps</div>
+<div class="edu-school">IPSSI – Grande École d'Informatique, Lille</div>
+<div class="edu-dates">Octobre 2026 (sous réserve d'alternance)</div>
+<div class="edu-details">
+<p>Formation en alternance spécialisée en administration systèmes, réseaux et cybersécurité (SecOps).</p>
+<p>Rythme : 3 semaines en entreprise / 1 semaine école.</p>
+</div>
+</div>
 
-        <section id="contact" class="contact-section">
-            <div class="section-header" style="text-align: center;">
-                <span class="section-subtitle">04. Un projet ?</span>
-                <h2>Me Contacter</h2>
-                <p class="contact-intro">Je suis à la recherche d'opportunités en alternance ou de projets collaboratifs. Discutons-en !</p>
-            </div>
-            
-            <div class="contact-cards-container">
-                <a href="mailto:mirwais.cassart@outlook.com" class="contact-card-modern">
-                    <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
-                    <div class="contact-info-box">
-                        <span>Email</span>
-                        <strong>mirwais.cassart@outlook.com</strong>
-                    </div>
-                </a>
-                
-                <a href="https://www.linkedin.com/in/mirwais-cassart-3a557930a/" class="contact-card-modern" target="_blank">
-                    <div class="contact-icon-box"><i class="fab fa-linkedin-in"></i></div>
-                    <div class="contact-info-box">
-                        <span>LinkedIn</span>
-                        <strong>Mon Profil Professionnel</strong>
-                    </div>
-                </a>
-            </div>
-        </section>
-    </main>
+<div class="edu-card">
+<div class="edu-icon"><i class="fas fa-network-wired"></i></div>
+<span class="edu-level">BAC+2 — DIPLÔME OBTENU</span>
+<div class="edu-title">BTS Services Informatiques aux Organisations</div>
+<div class="edu-school">Lycée Henri Wallon, Maubeuge</div>
+<div class="edu-dates">Septembre 2023 – Juillet 2025</div>
+<div class="edu-details">
+<p>Option SISR (Solutions d'Infrastructure, Systèmes et Réseaux). Formation axée sur l'administration des infrastructures, la cybersécurité et le support informatique.</p>
+<p>Option facultative : EF2 – Mathématiques approfondies</p>
+<p>Projets réalisés : NAS Synology RS422+, AD GPO/MFA, DHCP+DNS Raspberry Pi, Supervision Zabbix, Scripts PowerShell, Déploiement MDT.</p>
+</div>
+</div>
 
-    <footer class="footer-credits">
-        <p>© 2026 Mirwais Cassart. Conçu pour le réseau & la sécurité.</p>
-    </footer>
+<div class="edu-card">
+<div class="edu-icon"><i class="fas fa-microchip"></i></div>
+<span class="edu-level">BACCALAURÉAT — MENTION ASSEZ BIEN</span>
+<div class="edu-title">Baccalauréat Professionnel Systèmes Numériques</div>
+<div class="edu-school">Lycée Privé Théophile Legrand, Maubeuge</div>
+<div class="edu-dates">Septembre 2020 – Juillet 2023</div>
+<div class="edu-details">
+<p>Option RISC (Réseaux Informatiques et Systèmes Communicants).</p>
+<span class="mention"><i class="fas fa-award"></i> Mention Assez Bien</span>
+<p style="margin-top:.75rem">Stages : SNCF, Framatome, Lyreco, PC Crash — initiation aux environnements télécoms, industriel, support IT et dépannage.</p>
+</div>
+</div>
 
-    <script>
-        const typedTextSpan = document.querySelector(".typed-text");
-        const textArray = ["Expertise Réseaux & Systèmes", "Solutions Cybersécurité", "Étudiant BTS SIO (SISR)"];
-        let textNo = 0; let charIndex = 0;
-        
-        function type() {
-            if (charIndex < textArray[textNo].length) {
-                typedTextSpan.textContent += textArray[textNo].charAt(charIndex);
-                charIndex++; setTimeout(type, 80);
-            } else { setTimeout(erase, 2200); }
-        }
-        function erase() {
-            if (charIndex > 0) {
-                typedTextSpan.textContent = textArray[textNo].substring(0, charIndex-1);
-                charIndex--; setTimeout(erase, 40);
-            } else { textNo++; if(textNo>=textArray.length) textNo=0; setTimeout(type, 400); }
-        }
-        document.addEventListener("DOMContentLoaded", function() { setTimeout(type, 800); });
-    </script>
+</div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+<div class="section-inner">
+<span class="section-label">04. Compétences techniques</span>
+<h2 class="section-title">Stack <span>technique</span></h2>
+<p class="section-desc">Compétences développées en stage et en pratique personnelle, évaluées honnêtement.</p>
+<div class="skills-grid">
+
+<div class="skill-group">
+<div class="skill-group-header">
+<div class="skill-group-icon"><i class="fas fa-server"></i></div>
+<h3>Systèmes & Serveurs</h3>
+</div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Windows Server (AD DS, GPO)</span><span class="skill-level">Avancé</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Active Directory / LDAP</span><span class="skill-level">Avancé</span></div><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Linux Ubuntu / Debian</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Kali Linux</span><span class="skill-level">Débutant+</span></div><div class="skill-bar"><div class="skill-fill" style="width:45%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">DeploymentWorkbench (MDT)</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
+</div>
+
+<div class="skill-group">
+<div class="skill-group-header">
+<div class="skill-group-icon"><i class="fas fa-network-wired"></i></div>
+<h3>Réseaux & Télécoms</h3>
+</div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">DHCP / DNS</span><span class="skill-level">Avancé</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">VLAN / Routage / Switching</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Firewall / VPN / VoIP</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Cisco Packet Tracer</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:62%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Wireshark</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:58%"></div></div></div>
+</div>
+
+<div class="skill-group">
+<div class="skill-group-header">
+<div class="skill-group-icon"><i class="fas fa-shield-halved"></i></div>
+<h3>Cybersécurité</h3>
+</div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Durcissement AD (GPO, MFA)</span><span class="skill-level">Avancé</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Supervision Zabbix</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:68%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Metasploit / Kali</span><span class="skill-level">Débutant+</span></div><div class="skill-bar"><div class="skill-fill" style="width:40%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Gestion PRA / sauvegardes</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">NAS Synology (RAID)</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+</div>
+
+<div class="skill-group">
+<div class="skill-group-header">
+<div class="skill-group-icon"><i class="fas fa-cube"></i></div>
+<h3>Virtualisation</h3>
+</div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">VMware vSphere / ESXi</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">VirtualBox</span><span class="skill-level">Avancé</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Raspberry Pi</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
+</div>
+
+<div class="skill-group">
+<div class="skill-group-header">
+<div class="skill-group-icon"><i class="fas fa-terminal"></i></div>
+<h3>Scripting & Dev</h3>
+</div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">PowerShell</span><span class="skill-level">Intermédiaire+</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Bash</span><span class="skill-level">Débutant+</span></div><div class="skill-bar"><div class="skill-fill" style="width:45%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Python</span><span class="skill-level">Débutant+</span></div><div class="skill-bar"><div class="skill-fill" style="width:42%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">HTML5 / CSS3</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div></div>
+</div>
+
+<div class="skill-group">
+<div class="skill-group-header">
+<div class="skill-group-icon"><i class="fas fa-cloud"></i></div>
+<h3>Cloud & Outils</h3>
+</div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Git / GitHub</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Microsoft 365</span><span class="skill-level">Avancé</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Supabase / MySQL</span><span class="skill-level">Débutant+</span></div><div class="skill-bar"><div class="skill-fill" style="width:42%"></div></div></div>
+<div class="skill-item"><div class="skill-row"><span class="skill-name">Trello / Agile-Kanban</span><span class="skill-level">Intermédiaire</span></div><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--bg2)">
+<div class="section-inner">
+<span class="section-label">05. Réalisations</span>
+<h2 class="section-title">Projets <span>techniques</span></h2>
+<p class="section-desc">Projets réalisés en stage ou à titre personnel, reflétant mes compétences en conditions réelles.</p>
+<div class="projects-grid">
+
+<div class="project-card featured">
+<div class="project-top">
+<div class="project-icon"><i class="fas fa-shield-halved"></i></div>
+<span class="project-featured-badge">Projet phare</span>
+</div>
+<div class="project-title">Durcissement Active Directory & SecOps</div>
+<p class="project-desc">Mise en sécurité complète d'un Active Directory en environnement Windows Server dans une association médico-sociale. Déploiement des politiques de sécurité critiques et authentification renforcée.</p>
+<div class="project-missions">
+<h4>Missions réalisées</h4>
+<ul>
+<li>Audit des GPO existantes et mise en place de politiques critiques</li>
+<li>Déploiement du MFA (Authentification multifacteur) sur serveurs Windows et Linux</li>
+<li>Gestion des rôles, mappages de dossiers et permissions granulaires</li>
+<li>Scripts PowerShell de création automatisée des utilisateurs et arborescences</li>
+<li>Documentation technique complète</li>
+</ul>
+</div>
+<div class="tl-tags"><span class="tag">Active Directory</span><span class="tag">GPO</span><span class="tag">MFA</span><span class="tag">PowerShell</span><span class="tag">Windows Server</span></div>
+<div class="project-footer">
+<span style="color:var(--text-muted);font-size:.8rem"><i class="fas fa-building"></i> APEI Les Papillons Blancs · 2025</span>
+</div>
+</div>
+
+<div class="project-card featured">
+<div class="project-top">
+<div class="project-icon"><i class="fas fa-eye"></i></div>
+<span class="project-featured-badge">Projet phare</span>
+</div>
+<div class="project-title">Supervision Zabbix sur Raspberry Pi</div>
+<p class="project-desc">Déploiement d'une solution de supervision réseau centralisée sur Raspberry Pi pour monitorer l'ensemble de l'infrastructure en temps réel et automatiser la collecte des logs.</p>
+<div class="project-missions">
+<h4>Missions réalisées</h4>
+<ul>
+<li>Installation et configuration d'un serveur Zabbix sur Raspberry Pi</li>
+<li>Supervision du DHCP et DNS en temps réel avec alertes automatiques</li>
+<li>Centralisation et sauvegarde des logs sur NAS Synology</li>
+<li>Script Bash d'automatisation du déploiement du serveur</li>
+<li>Configuration du point d'accès Wi-Fi et des plages DHCP</li>
+</ul>
+</div>
+<div class="tl-tags"><span class="tag">Zabbix</span><span class="tag">Raspberry Pi</span><span class="tag">DHCP</span><span class="tag">DNS</span><span class="tag">Bash</span><span class="tag">NAS</span></div>
+<div class="project-footer">
+<span style="color:var(--text-muted);font-size:.8rem"><i class="fas fa-building"></i> APEI Les Papillons Blancs · 2025</span>
+</div>
+</div>
+
+<div class="project-card">
+<div class="project-top">
+<div class="project-icon"><i class="fas fa-hdd"></i></div>
+</div>
+<div class="project-title">Plan de Reprise d'Activité & NAS Synology</div>
+<p class="project-desc">Conception et mise en œuvre d'un PRA complet avec infrastructure de sauvegarde automatisée sur NAS Synology RS422+ en environnement médico-social.</p>
+<div class="project-missions">
+<h4>Missions réalisées</h4>
+<ul>
+<li>Configuration NAS Synology RS422+ : déballage, disques, RAID, réseau</li>
+<li>Mise en place des dossiers partagés et des sauvegardes automatisées</li>
+<li>Modification des scripts utilisateurs pour les dossiers de destination</li>
+<li>Rédaction du Plan de Reprise d'Activité et tests de restauration</li>
+</ul>
+</div>
+<div class="tl-tags"><span class="tag">NAS Synology</span><span class="tag">RAID</span><span class="tag">PRA</span><span class="tag">Sauvegarde</span></div>
+<div class="project-footer">
+<span style="color:var(--text-muted);font-size:.8rem"><i class="fas fa-building"></i> APEI Les Papillons Blancs · 2024-2025</span>
+</div>
+</div>
+
+<div class="project-card">
+<div class="project-top">
+<div class="project-icon"><i class="fas fa-laptop"></i></div>
+</div>
+<div class="project-title">Déploiement de postes via MDT</div>
+<p class="project-desc">Automatisation du déploiement de postes de travail via Microsoft Deployment Toolkit (DeploymentWorkbench) pour industrialiser les installations Windows dans l'environnement APEI.</p>
+<div class="project-missions">
+<h4>Missions réalisées</h4>
+<ul>
+<li>Configuration de DeploymentWorkbench (MDT) pour le déploiement automatisé</li>
+<li>Création des séquences de tâches Windows personnalisées</li>
+<li>Tests et validation sur environnement de test avant déploiement</li>
+<li>Installation et paramétrage de nouveaux postes en production</li>
+</ul>
+</div>
+<div class="tl-tags"><span class="tag">MDT</span><span class="tag">DeploymentWorkbench</span><span class="tag">Windows</span><span class="tag">Automatisation</span></div>
+<div class="project-footer">
+<span style="color:var(--text-muted);font-size:.8rem"><i class="fas fa-building"></i> APEI Les Papillons Blancs · 2024</span>
+</div>
+</div>
+
+<div class="project-card">
+<div class="project-top">
+<div class="project-icon"><i class="fas fa-cloud"></i></div>
+</div>
+<div class="project-title">Portail Collecte Cloud ERP (Supabase)</div>
+<p class="project-desc">Développement d'une interface web connectée à une base de données Supabase avec implémentation de politiques de sécurité Row Level Security et espace d'administration.</p>
+<div class="project-missions">
+<h4>Missions réalisées</h4>
+<ul>
+<li>Conception et développement de l'interface HTML/CSS/JS</li>
+<li>Connexion à Supabase (PostgreSQL managé)</li>
+<li>Implémentation des politiques RLS pour la sécurité des données</li>
+<li>Création d'un espace administrateur avec gestion des droits</li>
+</ul>
+</div>
+<div class="tl-tags"><span class="tag">Supabase</span><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span><span class="tag">RLS</span></div>
+<div class="project-footer">
+<a href="https://comptabiliterp.github.io/comptabiliterp/" target="_blank" class="project-link">Voir le projet <i class="fas fa-external-link-alt"></i></a>
+</div>
+</div>
+
+<div class="project-card">
+<div class="project-top">
+<div class="project-icon"><i class="fas fa-database"></i></div>
+</div>
+<div class="project-title">Base de données SQL — Gestion d'inventaire</div>
+<p class="project-desc">Conception et déploiement d'une base de données SQL pour la gestion de l'inventaire du parc informatique chez PC Crash, en remplacement d'un suivi manuel.</p>
+<div class="project-missions">
+<h4>Missions réalisées</h4>
+<ul>
+<li>Conception du modèle de données adapté à l'inventaire IT</li>
+<li>Création des tables, relations et requêtes SQL</li>
+<li>Alimentation de la base avec l'inventaire existant</li>
+</ul>
+</div>
+<div class="tl-tags"><span class="tag">SQL</span><span class="tag">Base de données</span><span class="tag">Inventaire</span></div>
+<div class="project-footer">
+<span style="color:var(--text-muted);font-size:.8rem"><i class="fas fa-building"></i> PC Crash · 2022</span>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SOFT SKILLS -->
+<section id="softskills">
+<div class="section-inner">
+<span class="section-label">06. Compétences humaines</span>
+<h2 class="section-title">Compétences <span>psychosociales</span></h2>
+<p class="section-desc">Résultats du test de compétences psychosociales réalisé dans le cadre de ma mission chez Efficience. Score total : 99/120 (très bon niveau de maîtrise).</p>
+<div class="soft-grid">
+<div class="soft-card">
+<div class="soft-score">18<span>/20</span></div>
+<div class="soft-label">Communication</div>
+<div class="soft-bar"><div class="soft-fill" style="width:90%;background:linear-gradient(90deg,var(--blue),var(--cyan))"></div></div>
+<div class="soft-level">Très développé</div>
+</div>
+<div class="soft-card">
+<div class="soft-score">18<span>/20</span></div>
+<div class="soft-label">Empathie</div>
+<div class="soft-bar"><div class="soft-fill" style="width:90%;background:linear-gradient(90deg,var(--blue),var(--cyan))"></div></div>
+<div class="soft-level">Très développé</div>
+</div>
+<div class="soft-card">
+<div class="soft-score">17<span>/20</span></div>
+<div class="soft-label">Connaissance de soi</div>
+<div class="soft-bar"><div class="soft-fill" style="width:85%;background:linear-gradient(90deg,var(--blue),var(--cyan))"></div></div>
+<div class="soft-level">Très développé</div>
+</div>
+<div class="soft-card">
+<div class="soft-score">16<span>/20</span></div>
+<div class="soft-label">Gestion des émotions</div>
+<div class="soft-bar"><div class="soft-fill" style="width:80%;background:linear-gradient(90deg,var(--blue),var(--cyan))"></div></div>
+<div class="soft-level">Très développé</div>
+</div>
+<div class="soft-card">
+<div class="soft-score">16<span>/20</span></div>
+<div class="soft-label">Esprit critique</div>
+<div class="soft-bar"><div class="soft-fill" style="width:80%;background:linear-gradient(90deg,var(--blue),var(--cyan))"></div></div>
+<div class="soft-level">Très développé</div>
+</div>
+<div class="soft-card">
+<div class="soft-score">14<span>/20</span></div>
+<div class="soft-label">Relations interpersonnelles</div>
+<div class="soft-bar"><div class="soft-fill" style="width:70%;background:linear-gradient(90deg,var(--blue),#90CAF9)"></div></div>
+<div class="soft-level">Satisfaisant</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- LANGUAGES + INTERESTS -->
+<section style="background:var(--bg2)">
+<div class="section-inner">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem">
+<div>
+<span class="section-label">07. Langues</span>
+<h2 class="section-title" style="font-size:1.8rem">Langues</h2>
+<div class="lang-grid" style="margin-top:1.5rem">
+<div class="lang-card">
+<div class="lang-flag">🇫🇷</div>
+<div class="lang-info"><h4>Français</h4><p>Langue maternelle</p><span class="lang-level">NATIF</span></div>
+</div>
+<div class="lang-card">
+<div class="lang-flag">🇬🇧</div>
+<div class="lang-info"><h4>Anglais</h4><p>Lecture, écriture, oral</p><span class="lang-level">B2</span></div>
+</div>
+</div>
+</div>
+<div>
+<span class="section-label">08. Centres d'intérêt</span>
+<h2 class="section-title" style="font-size:1.8rem">Loisirs</h2>
+<div class="interests-grid" style="margin-top:1.5rem">
+<div class="interest-card"><i class="fas fa-futbol"></i><h4>Football</h4><p>Pratique régulière</p></div>
+<div class="interest-card"><i class="fas fa-person-falling-burst"></i><h4>Judo</h4><p>Arts martiaux</p></div>
+<div class="interest-card"><i class="fas fa-film"></i><h4>Cinéma</h4><p>Drames & Thrillers</p></div>
+<div class="interest-card"><i class="fas fa-book"></i><h4>Lecture</h4><p>Science-fiction</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="section-inner">
+<span class="section-label">09. Contact</span>
+<h2 class="section-title">Travaillons <span>ensemble</span></h2>
+<div class="contact-grid">
+<div>
+<div class="contact-text">
+<p>Je suis à la recherche d'une <strong>alternance en administration systèmes & réseaux</strong> pour intégrer le Bachelor Administrateur Systèmes, Réseaux & SecOps à l'IPSSI de Lille en octobre 2026.</p>
+<p>Secteur géographique : <strong>Lille – Maubeuge – Valenciennes</strong> (présentiel, hybride ou remote).</p>
+<p>Rythme d'alternance : <strong>3 semaines en entreprise / 1 semaine école.</strong></p>
+</div>
+<div class="contact-links">
+<a href="mailto:mirwais.cassart@gmail.com" class="contact-link">
+<div class="contact-link-icon"><i class="fas fa-envelope"></i></div>
+<div class="contact-link-info"><span>Email</span><strong>mirwais.cassart@gmail.com</strong></div>
+</a>
+<a href="tel:0782598515" class="contact-link">
+<div class="contact-link-icon"><i class="fas fa-phone"></i></div>
+<div class="contact-link-info"><span>Téléphone</span><strong>07 82 59 85 15</strong></div>
+</a>
+<a href="https://www.linkedin.com/in/mirwaiscassart/" target="_blank" class="contact-link">
+<div class="contact-link-icon"><i class="fab fa-linkedin-in"></i></div>
+<div class="contact-link-info"><span>LinkedIn</span><strong>linkedin.com/in/mirwaiscassart</strong></div>
+</a>
+<a href="https://github.com/MirwaisCassart" target="_blank" class="contact-link">
+<div class="contact-link-icon"><i class="fab fa-github"></i></div>
+<div class="contact-link-info"><span>GitHub</span><strong>github.com/MirwaisCassart</strong></div>
+</a>
+</div>
+</div>
+<div class="availability">
+<div class="avail-header">
+<div class="avail-dot"></div>
+<h3>Disponibilité & Recherche</h3>
+</div>
+<div class="avail-details">
+<div class="avail-row"><i class="fas fa-calendar"></i><span>Début : <strong>Octobre 2026</strong></span></div>
+<div class="avail-row"><i class="fas fa-rotate"></i><span>Rythme : <strong>3 sem. entreprise / 1 sem. école</strong></span></div>
+<div class="avail-row"><i class="fas fa-map-marker-alt"></i><span>Zone : <strong>Lille, Maubeuge, Valenciennes</strong></span></div>
+<div class="avail-row"><i class="fas fa-home"></i><span>Mode : <strong>Sur site, Hybride, Remote</strong></span></div>
+<div class="avail-row"><i class="fas fa-graduation-cap"></i><span>École : <strong>IPSSI Lille (Bachelor Bac+3)</strong></span></div>
+<div class="avail-row"><i class="fas fa-car"></i><span>Mobilité : <strong>Permis B — Véhiculé</strong></span></div>
+<div class="avail-row"><i class="fas fa-file-pdf"></i><a href="assets/cv-mirwais-cassart.pdf" download style="color:var(--blue-light);text-decoration:none;font-weight:600">Télécharger mon CV PDF</a></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<p>© 2026 <span>Mirwais Cassart</span> · Administrateur Systèmes & Réseaux · <a href="https://www.linkedin.com/in/mirwaiscassart/" style="color:var(--blue-light);text-decoration:none">LinkedIn</a></p>
+</footer>
+
+<script>
+const texts = ["Administrateur Systèmes & Réseaux","Spécialiste Cybersécurité & SecOps","Diplômé BTS SIO option SISR","En recherche d'alternance — Oct. 2026"];
+let ti=0,ci=0,del=false;
+const el=document.getElementById('typed');
+function tick(){
+if(!del){
+el.textContent=texts[ti].substring(0,ci+1);
+ci++;
+if(ci===texts[ti].length){del=true;setTimeout(tick,2000);return}
+}else{
+el.textContent=texts[ti].substring(0,ci-1);
+ci--;
+if(ci===0){del=false;ti=(ti+1)%texts.length}
+}
+setTimeout(tick,del?40:80);
+}
+tick();
+</script>
 </body>
 </html>
