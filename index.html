@@ -28,6 +28,7 @@ body{background:var(--ink);color:var(--text);font-family:'Inter',sans-serif;font
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--ink)}
 ::-webkit-scrollbar-thumb{background:var(--blue-dim);border-radius:3px}
+img{max-width:100%}
 
 /* ——— NAV ——— */
 nav{position:fixed;top:0;left:0;right:0;z-index:99;padding:0 2rem;transition:background .3s,backdrop-filter .3s}
@@ -39,11 +40,24 @@ nav.scrolled{background:rgba(6,15,26,.85);backdrop-filter:blur(16px);border-bott
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.3px;transition:color .2s}
 .nav-links a:hover{color:var(--text)}
 .nav-cta{display:flex;gap:.75rem}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1.25rem;border-radius:6px;font-size:.85rem;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1.25rem;border-radius:6px;font-size:.85rem;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none;white-space:nowrap}
 .btn-primary{background:var(--blue);color:#fff}
 .btn-primary:hover{background:var(--blue-dim);transform:translateY(-1px)}
 .btn-ghost{border:1px solid var(--border);color:var(--muted)}
 .btn-ghost:hover{border-color:var(--blue);color:var(--text)}
+
+/* ——— NAV BURGER (mobile) ——— */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:0}
+.nav-burger span{display:block;width:100%;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.nav-mobile-panel{display:none;flex-direction:column;gap:0;background:rgba(6,15,26,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.5rem 2rem 1.25rem}
+.nav-mobile-panel.open{display:flex}
+.nav-mobile-panel a{color:var(--text);text-decoration:none;font-size:.95rem;font-weight:500;padding:.85rem 0;border-bottom:1px solid var(--border)}
+.nav-mobile-panel a:last-child{border-bottom:none}
+.nav-mobile-panel .btn{margin-top:.75rem;justify-content:center}
 
 /* ——— HERO ——— */
 .hero{min-height:100vh;display:flex;align-items:center;padding:80px 2rem 60px;position:relative;overflow:hidden}
@@ -53,13 +67,13 @@ nav.scrolled{background:rgba(6,15,26,.85);backdrop-filter:blur(16px);border-bott
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;background:rgba(23,165,230,.08);border:1px solid rgba(23,165,230,.2);color:var(--blue);padding:.4rem 1rem;border-radius:20px;font-size:.8rem;font-family:'JetBrains Mono',monospace;margin-bottom:1.75rem}
 .hero-eyebrow::before{content:'';width:7px;height:7px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-.hero-name{font-family:'Syne',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:800;line-height:.95;letter-spacing:-3px;color:#fff;margin-bottom:.75rem}
+.hero-name{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,9vw,5.5rem);font-weight:800;line-height:.95;letter-spacing:-3px;color:#fff;margin-bottom:.75rem}
 .hero-name .first{display:block}
 .hero-name .last{display:block;color:var(--blue)}
 .hero-role{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:400;color:var(--muted);margin-bottom:2rem;letter-spacing:.2px}
 .hero-role strong{color:var(--text);font-weight:500}
 .hero-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.hero-meta{display:flex;gap:2rem;padding-top:2rem;border-top:1px solid var(--border)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:2rem;row-gap:1.25rem;padding-top:2rem;border-top:1px solid var(--border)}
 .meta-item{display:flex;flex-direction:column;gap:.2rem}
 .meta-item .val{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:#fff}
 .meta-item .lbl{font-size:.75rem;color:var(--muted);font-weight:500;letter-spacing:.5px;text-transform:uppercase}
@@ -72,7 +86,7 @@ nav.scrolled{background:rgba(6,15,26,.85);backdrop-filter:blur(16px);border-bott
 .term-dot.y{background:#ffbd2e}
 .term-dot.g{background:#27c93f}
 .term-title{color:var(--muted);font-size:.75rem;margin-left:auto;margin-right:auto}
-.term-body{padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:.1rem}
+.term-body{padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:.1rem;overflow-x:auto}
 .t-prompt{color:var(--blue)}
 .t-cmd{color:#fff}
 .t-out{color:var(--muted)}
@@ -98,25 +112,25 @@ section{padding:6rem 2rem}
 .pcard-top{display:flex;justify-content:space-between;align-items:flex-start}
 .pcard-icon{width:44px;height:44px;background:rgba(23,165,230,.1);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .pcard-icon i{color:var(--blue);font-size:1.1rem}
-.pcard-badge{font-family:'JetBrains Mono',monospace;font-size:.68rem;background:rgba(23,165,230,.12);border:1px solid rgba(23,165,230,.25);color:var(--blue);padding:.2rem .65rem;border-radius:20px;font-weight:500}
+.pcard-badge{font-family:'JetBrains Mono',monospace;font-size:.68rem;background:rgba(23,165,230,.12);border:1px solid rgba(23,165,230,.25);color:var(--blue);padding:.2rem .65rem;border-radius:20px;font-weight:500;white-space:nowrap}
 .pcard-badge.live{background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.25);color:#4ADE80}
 .pcard-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;letter-spacing:-.3px}
 .pcard-desc{color:var(--muted);font-size:.88rem;line-height:1.75}
 .pcard ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
 .pcard ul li{font-size:.84rem;color:var(--muted);padding-left:1.1rem;position:relative}
 .pcard ul li::before{content:'▸';position:absolute;left:0;color:var(--blue);font-size:.7rem;top:.2rem}
-.pcard-footer{margin-top:auto;display:flex;align-items:center;gap:1rem}
+.pcard-footer{margin-top:auto;display:flex;flex-wrap:wrap;row-gap:.75rem;align-items:center;gap:1rem}
 .ptags{display:flex;flex-wrap:wrap;gap:.4rem}
 .ptag{font-family:'JetBrains Mono',monospace;font-size:.68rem;background:var(--ink3);border:1px solid var(--border);color:var(--muted);padding:.2rem .55rem;border-radius:4px}
 .plink{color:var(--blue);font-size:.82rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;white-space:nowrap;margin-left:auto}
 .plink:hover{color:#fff}
-.pcard-context{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);background:var(--ink3);border-left:2px solid var(--blue);padding:.5rem .75rem;border-radius:0 4px 4px 0}
+.pcard-context{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);background:var(--ink3);border-left:2px solid var(--blue);padding:.5rem .75rem;border-radius:0 4px 4px 0;overflow-wrap:anywhere}
 
 /* ——— SKILLS ——— */
 .skills-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
 .skill-group{background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem}
 .sg-title{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
-.sg-icon{width:32px;height:32px;background:rgba(23,165,230,.1);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.sg-icon{width:32px;height:32px;background:rgba(23,165,230,.1);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .sg-icon i{color:var(--blue);font-size:.85rem}
 .sg-title h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;color:#fff}
 .stags{display:flex;flex-wrap:wrap;gap:.5rem}
@@ -155,7 +169,7 @@ section{padding:6rem 2rem}
 
 /* ——— CONTACT ——— */
 .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.contact-text h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:1rem}
+.contact-text h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,7vw,3rem);font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:1rem}
 .contact-text p{color:var(--muted);line-height:1.85;margin-bottom:.75rem;font-size:.95rem}
 .contact-text strong{color:var(--text);font-weight:500}
 .contact-panel{background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:2rem;display:flex;flex-direction:column;gap:.75rem}
@@ -163,6 +177,7 @@ section{padding:6rem 2rem}
 .clink:hover{border-color:var(--blue)}
 .clink-ic{width:38px;height:38px;background:rgba(23,165,230,.1);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .clink-ic i{color:var(--blue)}
+.clink-info{min-width:0;overflow-wrap:anywhere}
 .clink-info span{display:block;font-size:.72rem;color:var(--muted);letter-spacing:.3px}
 .clink-info strong{font-size:.88rem;color:var(--text)}
 .avail-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:#4ADE80;padding:.5rem 1rem;border-radius:6px;font-size:.82rem;margin-bottom:1.25rem}
@@ -176,7 +191,7 @@ footer a{color:var(--blue);text-decoration:none}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
 .reveal.in{opacity:1;transform:none}
 
-/* ——— RESPONSIVE ——— */
+/* ——— RESPONSIVE : tablette / petit desktop ——— */
 @media(max-width:880px){
 .hero-inner{grid-template-columns:1fr}
 .terminal{display:none}
@@ -186,6 +201,31 @@ footer a{color:var(--blue);text-decoration:none}
 .xp::before,.xp::after{display:none}
 .xp-date{text-align:left;padding:0}
 .nav-links{display:none}
+.nav-burger{display:flex}
+section{padding:4rem 1.5rem}
+.hero{padding:100px 1.5rem 3rem}
+}
+
+/* ——— RESPONSIVE : mobile ——— */
+@media(max-width:480px){
+nav{padding:0 1.25rem}
+.nav-inner{height:56px}
+.nav-cta .btn-ghost{display:none}
+.hero{padding:90px 1.25rem 2.5rem;min-height:auto}
+.hero-name{letter-spacing:-1.5px;margin-bottom:.5rem}
+.hero-eyebrow{font-size:.7rem;padding:.35rem .8rem;margin-bottom:1.25rem}
+.hero-role{font-size:.92rem;margin-bottom:1.5rem}
+.hero-actions{margin-bottom:2rem}
+.hero-actions .btn{flex:1 1 auto;justify-content:center}
+.hero-meta{gap:1.25rem;row-gap:1rem}
+.meta-item .val{font-size:1.25rem}
+.meta-item .lbl{font-size:.68rem}
+section{padding:3.5rem 1.25rem}
+.s-title{margin-bottom:.5rem}
+.s-sub{margin-bottom:2rem}
+.pcard{padding:1.25rem}
+.contact-panel{padding:1.25rem}
+.contact-wrap{gap:2.5rem}
 }
 </style>
 <meta property="og:type" content="website">
@@ -213,6 +253,16 @@ footer a{color:var(--blue);text-decoration:none}
 <a href="cv-mirwais-cassart.pdf" download class="btn btn-ghost"><i class="fas fa-download"></i> CV</a>
 <a href="#contact" class="btn btn-primary">Me contacter</a>
 </div>
+<button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
+</div>
+<div class="nav-mobile-panel" id="navMobilePanel">
+<a href="#projets">Projets</a>
+<a href="#competences">Compétences</a>
+<a href="#experience">Expérience</a>
+<a href="#contact">Contact</a>
+<a href="cv-mirwais-cassart.pdf" download class="btn btn-ghost"><i class="fas fa-download"></i> Télécharger le CV</a>
 </div>
 </nav>
 
@@ -240,7 +290,7 @@ footer a{color:var(--blue);text-decoration:none}
 </div>
 </div>
 
-<!-- TERMINAL — signature element -->
+<!-- TERMINAL — signature element (masqué sous 880px) -->
 <div class="terminal">
 <div class="term-bar">
 <div class="term-dot r"></div>
@@ -373,32 +423,32 @@ footer a{color:var(--blue);text-decoration:none}
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem" class="reveal">
 
 <figure style="margin:0;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-<img src="rbdhcp.jpg" alt="Raspberry Pi RBDHCP9 en baie réseau" style="width:100%;height:200px;object-fit:cover;display:block">
+<img src="rbdhcp.jpg" alt="Raspberry Pi RBDHCP9 en baie réseau" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
 <figcaption style="padding:.75rem 1rem;font-size:.78rem;color:var(--muted)"><i class="fas fa-raspberry-pi" style="color:var(--blue);margin-right:.4rem"></i>Raspberry Pi RBDHCP9 — 172.17.9.241 — déployé en baie réseau</figcaption>
 </figure>
 
 <figure style="margin:0;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-<img src="installation_nas.jpg" alt="Installation NAS Synology RS422+" style="width:100%;height:200px;object-fit:cover;display:block">
+<img src="installation_nas.jpg" alt="Installation NAS Synology RS422+" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
 <figcaption style="padding:.75rem 1rem;font-size:.78rem;color:var(--muted)"><i class="fas fa-hdd" style="color:var(--blue);margin-right:.4rem"></i>Déballage NAS Synology RS422+ avec disques WD Red Pro 2TB</figcaption>
 </figure>
 
 <figure style="margin:0;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-<img src="raid10.PNG" alt="Configuration RAID 10 sur Synology" style="width:100%;height:200px;object-fit:cover;display:block">
+<img src="raid10.PNG" alt="Configuration RAID 10 sur Synology" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
 <figcaption style="padding:.75rem 1rem;font-size:.78rem;color:var(--muted)"><i class="fas fa-database" style="color:var(--blue);margin-right:.4rem"></i>Configuration RAID 10 — tolérance pannes / 2 disques</figcaption>
 </figure>
 
 <figure style="margin:0;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-<img src="sauvegardes.PNG" alt="Planification des sauvegardes Synology" style="width:100%;height:200px;object-fit:cover;display:block">
+<img src="sauvegardes.PNG" alt="Planification des sauvegardes Synology" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
 <figcaption style="padding:.75rem 1rem;font-size:.78rem;color:var(--muted)"><i class="fas fa-clock" style="color:var(--blue);margin-right:.4rem"></i>Sauvegardes automatisées — 03h00 quotidien, 256 versions, 9 mois</figcaption>
 </figure>
 
 <figure style="margin:0;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-<img src="gpo.PNG" alt="GPO restrictions Active Directory" style="width:100%;height:200px;object-fit:cover;display:block">
+<img src="gpo.PNG" alt="GPO restrictions Active Directory" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
 <figcaption style="padding:.75rem 1rem;font-size:.78rem;color:var(--muted)"><i class="fas fa-shield-halved" style="color:var(--blue);margin-right:.4rem"></i>GPO critiques — restrictions panneau de configuration utilisateurs</figcaption>
 </figure>
 
 <figure style="margin:0;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-<img src="zabbix_conf.PNG" alt="Configuration Zabbix agent" style="width:100%;height:200px;object-fit:cover;display:block">
+<img src="zabbix_conf.PNG" alt="Configuration Zabbix agent" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
 <figcaption style="padding:.75rem 1rem;font-size:.78rem;color:var(--muted)"><i class="fas fa-eye" style="color:var(--blue);margin-right:.4rem"></i>Configuration agent Zabbix — serveur 172.17.0.227, port 10050</figcaption>
 </figure>
 
@@ -656,6 +706,22 @@ footer a{color:var(--blue);text-decoration:none}
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{
 nav.classList.toggle('scrolled',window.scrollY>30);
+});
+
+// Nav burger (mobile menu)
+const burger=document.getElementById('navBurger');
+const mobilePanel=document.getElementById('navMobilePanel');
+burger.addEventListener('click',()=>{
+const isOpen=mobilePanel.classList.toggle('open');
+burger.classList.toggle('open',isOpen);
+burger.setAttribute('aria-expanded',isOpen);
+});
+mobilePanel.querySelectorAll('a').forEach(a=>{
+a.addEventListener('click',()=>{
+mobilePanel.classList.remove('open');
+burger.classList.remove('open');
+burger.setAttribute('aria-expanded','false');
+});
 });
 
 // Scroll reveal
