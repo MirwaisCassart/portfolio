@@ -3,8 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Mirwais Cassart — Administrateur Systèmes & Réseaux. BTS SIO SISR. Recherche alternance Octobre 2026 — Lille, Maubeuge.">
+<meta name="description" content="Mirwais Cassart — Administrateur Systèmes & Réseaux. BTS SIO SISR. Recherche alternance Septembre 2026 — Lille, Maubeuge.">
 <title>Mirwais Cassart · Admin Sys & Réseaux</title>
+<meta property="og:title" content="Mirwais Cassart · Administrateur Systèmes & Réseaux">
+<meta property="og:description" content="BTS SIO SISR · Recherche alternance sept. 2026 · Active Directory, Zabbix, VMware, PRA · Lille – Maubeuge">
+<meta property="og:image" content="https://mirwaiscassart.github.io/portfolio/banner-og.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://mirwaiscassart.github.io/portfolio/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -28,9 +35,7 @@ body{background:var(--ink);color:var(--text);font-family:'Inter',sans-serif;font
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--ink)}
 ::-webkit-scrollbar-thumb{background:var(--blue-dim);border-radius:3px}
-img{max-width:100%}
 
-/* ——— NAV ——— */
 nav{position:fixed;top:0;left:0;right:0;z-index:99;padding:0 2rem;transition:background .3s,backdrop-filter .3s}
 nav.scrolled{background:rgba(6,15,26,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
@@ -40,26 +45,12 @@ nav.scrolled{background:rgba(6,15,26,.85);backdrop-filter:blur(16px);border-bott
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.3px;transition:color .2s}
 .nav-links a:hover{color:var(--text)}
 .nav-cta{display:flex;gap:.75rem}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1.25rem;border-radius:6px;font-size:.85rem;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1.25rem;border-radius:6px;font-size:.85rem;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
 .btn-primary{background:var(--blue);color:#fff}
 .btn-primary:hover{background:var(--blue-dim);transform:translateY(-1px)}
 .btn-ghost{border:1px solid var(--border);color:var(--muted)}
 .btn-ghost:hover{border-color:var(--blue);color:var(--text)}
 
-/* ——— NAV BURGER (mobile) ——— */
-.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:0}
-.nav-burger span{display:block;width:100%;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s}
-.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav-burger.open span:nth-child(2){opacity:0}
-.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-.nav-mobile-panel{display:none;flex-direction:column;gap:0;background:rgba(6,15,26,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.5rem 2rem 1.25rem}
-.nav-mobile-panel.open{display:flex}
-.nav-mobile-panel a{color:var(--text);text-decoration:none;font-size:.95rem;font-weight:500;padding:.85rem 0;border-bottom:1px solid var(--border)}
-.nav-mobile-panel a:last-child{border-bottom:none}
-.nav-mobile-panel .btn{margin-top:.75rem;justify-content:center}
-
-/* ——— HERO ——— */
 .hero{min-height:100vh;display:flex;align-items:center;padding:80px 2rem 60px;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(23,165,230,.08) 1px,transparent 0);background-size:40px 40px;opacity:.6}
 .hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 800px 600px at 65% 50%,rgba(23,165,230,.06),transparent)}
@@ -67,18 +58,17 @@ nav.scrolled{background:rgba(6,15,26,.85);backdrop-filter:blur(16px);border-bott
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;background:rgba(23,165,230,.08);border:1px solid rgba(23,165,230,.2);color:var(--blue);padding:.4rem 1rem;border-radius:20px;font-size:.8rem;font-family:'JetBrains Mono',monospace;margin-bottom:1.75rem}
 .hero-eyebrow::before{content:'';width:7px;height:7px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-.hero-name{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,9vw,5.5rem);font-weight:800;line-height:.95;letter-spacing:-3px;color:#fff;margin-bottom:.75rem}
+.hero-name{font-family:'Syne',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:800;line-height:.95;letter-spacing:-3px;color:#fff;margin-bottom:.75rem}
 .hero-name .first{display:block}
 .hero-name .last{display:block;color:var(--blue)}
 .hero-role{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:400;color:var(--muted);margin-bottom:2rem;letter-spacing:.2px}
 .hero-role strong{color:var(--text);font-weight:500}
 .hero-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.hero-meta{display:flex;flex-wrap:wrap;gap:2rem;row-gap:1.25rem;padding-top:2rem;border-top:1px solid var(--border)}
+.hero-meta{display:flex;gap:2rem;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap}
 .meta-item{display:flex;flex-direction:column;gap:.2rem}
 .meta-item .val{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:#fff}
 .meta-item .lbl{font-size:.75rem;color:var(--muted);font-weight:500;letter-spacing:.5px;text-transform:uppercase}
 
-/* ——— TERMINAL ——— */
 .terminal{background:#070e17;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;box-shadow:0 24px 60px rgba(0,0,0,.5)}
 .term-bar{background:#0c1620;border-bottom:1px solid var(--border);padding:.65rem 1rem;display:flex;align-items:center;gap:.5rem}
 .term-dot{width:11px;height:11px;border-radius:50%}
@@ -86,25 +76,21 @@ nav.scrolled{background:rgba(6,15,26,.85);backdrop-filter:blur(16px);border-bott
 .term-dot.y{background:#ffbd2e}
 .term-dot.g{background:#27c93f}
 .term-title{color:var(--muted);font-size:.75rem;margin-left:auto;margin-right:auto}
-.term-body{padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:.1rem;overflow-x:auto}
+.term-body{padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:.1rem}
 .t-prompt{color:var(--blue)}
 .t-cmd{color:#fff}
 .t-out{color:var(--muted)}
 .t-out.hl{color:#7DD3FC}
 .t-out.ok{color:#4ADE80}
-.t-out.warn{color:#FCD34D}
 .t-cursor{display:inline-block;width:9px;height:1.1em;background:var(--blue);vertical-align:text-bottom;animation:blink .85s step-end infinite;margin-left:2px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
-/* ——— SECTIONS ——— */
 section{padding:6rem 2rem}
 .wrap{max-width:1100px;margin:0 auto}
 .s-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:.6rem;display:block}
 .s-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:.75rem}
 .s-sub{color:var(--muted);max-width:540px;font-size:.95rem;margin-bottom:3rem}
-.divider{width:48px;height:3px;background:var(--blue);border-radius:2px;margin:1rem 0 3rem}
 
-/* ——— PROJECTS ——— */
 .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
 .pcard{background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;display:flex;flex-direction:column;gap:1rem;transition:border-color .25s,transform .25s}
 .pcard:hover{border-color:var(--blue);transform:translateY(-3px)}
@@ -112,25 +98,29 @@ section{padding:6rem 2rem}
 .pcard-top{display:flex;justify-content:space-between;align-items:flex-start}
 .pcard-icon{width:44px;height:44px;background:rgba(23,165,230,.1);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .pcard-icon i{color:var(--blue);font-size:1.1rem}
-.pcard-badge{font-family:'JetBrains Mono',monospace;font-size:.68rem;background:rgba(23,165,230,.12);border:1px solid rgba(23,165,230,.25);color:var(--blue);padding:.2rem .65rem;border-radius:20px;font-weight:500;white-space:nowrap}
-.pcard-badge.live{background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.25);color:#4ADE80}
+.pcard-badge{font-family:'JetBrains Mono',monospace;font-size:.68rem;background:rgba(23,165,230,.12);border:1px solid rgba(23,165,230,.25);color:var(--blue);padding:.2rem .65rem;border-radius:20px;font-weight:500}
 .pcard-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;letter-spacing:-.3px}
 .pcard-desc{color:var(--muted);font-size:.88rem;line-height:1.75}
 .pcard ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
 .pcard ul li{font-size:.84rem;color:var(--muted);padding-left:1.1rem;position:relative}
 .pcard ul li::before{content:'▸';position:absolute;left:0;color:var(--blue);font-size:.7rem;top:.2rem}
-.pcard-footer{margin-top:auto;display:flex;flex-wrap:wrap;row-gap:.75rem;align-items:center;gap:1rem}
+.pcard-footer{margin-top:auto;display:flex;align-items:center;gap:1rem}
 .ptags{display:flex;flex-wrap:wrap;gap:.4rem}
 .ptag{font-family:'JetBrains Mono',monospace;font-size:.68rem;background:var(--ink3);border:1px solid var(--border);color:var(--muted);padding:.2rem .55rem;border-radius:4px}
 .plink{color:var(--blue);font-size:.82rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;white-space:nowrap;margin-left:auto}
 .plink:hover{color:#fff}
-.pcard-context{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);background:var(--ink3);border-left:2px solid var(--blue);padding:.5rem .75rem;border-radius:0 4px 4px 0;overflow-wrap:anywhere}
+.pcard-context{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);background:var(--ink3);border-left:2px solid var(--blue);padding:.5rem .75rem;border-radius:0 4px 4px 0}
 
-/* ——— SKILLS ——— */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.gallery-grid figure{margin:0;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.gallery-grid img{width:100%;height:200px;object-fit:cover;display:block}
+.gallery-grid figcaption{padding:.75rem 1rem;font-size:.78rem;color:var(--muted)}
+.gallery-grid figcaption i{color:var(--blue);margin-right:.4rem}
+
 .skills-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
 .skill-group{background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem}
 .sg-title{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
-.sg-icon{width:32px;height:32px;background:rgba(23,165,230,.1);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sg-icon{width:32px;height:32px;background:rgba(23,165,230,.1);border-radius:7px;display:flex;align-items:center;justify-content:center}
 .sg-icon i{color:var(--blue);font-size:.85rem}
 .sg-title h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;color:#fff}
 .stags{display:flex;flex-wrap:wrap;gap:.5rem}
@@ -138,7 +128,6 @@ section{padding:6rem 2rem}
 .stag:hover{border-color:var(--blue)}
 .stag.hi{border-color:rgba(23,165,230,.35);color:var(--blue);background:rgba(23,165,230,.06)}
 
-/* ——— EXPERIENCE ——— */
 .xp-grid{display:flex;flex-direction:column;gap:0}
 .xp{display:grid;grid-template-columns:180px 1fr;gap:2rem;padding:2rem 0;border-bottom:1px solid var(--border);position:relative}
 .xp:last-child{border-bottom:none}
@@ -147,7 +136,6 @@ section{padding:6rem 2rem}
 .xp.current::after{background:var(--blue);box-shadow:0 0 0 4px rgba(23,165,230,.15)}
 .xp-date{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted);line-height:1.5;padding-top:.25rem;text-align:right;padding-right:1.5rem}
 .xp-date .period{color:var(--blue);display:block;font-weight:500}
-.xp-content{}
 .xp-role{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.3px}
 .xp-company{color:var(--blue);font-size:.88rem;font-weight:500;margin:.2rem 0}
 .xp-loc{color:var(--muted);font-size:.8rem;margin-bottom:.75rem}
@@ -155,7 +143,6 @@ section{padding:6rem 2rem}
 .xp-tags{display:flex;flex-wrap:wrap;gap:.35rem}
 .xp-tag{font-family:'JetBrains Mono',monospace;font-size:.67rem;background:var(--ink3);border:1px solid var(--border);color:var(--muted);padding:.15rem .5rem;border-radius:3px}
 
-/* ——— EDUCATION ——— */
 .edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
 .ecard{background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;transition:border-color .2s}
 .ecard:hover{border-color:var(--blue)}
@@ -167,9 +154,20 @@ section{padding:6rem 2rem}
 .e-detail{color:var(--muted);font-size:.8rem;line-height:1.6;border-top:1px solid var(--border);padding-top:.75rem;margin-top:.5rem}
 .mention{display:inline-flex;align-items:center;gap:.3rem;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:#4ADE80;padding:.15rem .6rem;border-radius:4px;font-size:.72rem;font-weight:500;margin-top:.5rem}
 
-/* ——— CONTACT ——— */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+.ccard{background:var(--ink3);border:1px solid rgba(23,165,230,.35);border-radius:var(--r);padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start}
+.ccard-icon{width:48px;height:48px;background:rgba(23,165,230,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ccard-icon i{color:var(--blue);font-size:1.2rem}
+.ccard-org{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--blue);letter-spacing:1px;margin-bottom:.3rem}
+.ccard-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:.4rem}
+.ccard-desc{color:var(--muted);font-size:.82rem;line-height:1.7;margin-bottom:.75rem}
+.ccard-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem}
+.ctag{font-family:'JetBrains Mono',monospace;font-size:.7rem;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:#4ADE80;padding:.2rem .6rem;border-radius:4px}
+.ctag.blue{background:rgba(23,165,230,.08);border-color:rgba(23,165,230,.2);color:var(--blue)}
+.ccard a{color:var(--blue);font-size:.8rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem}
+
 .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.contact-text h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,7vw,3rem);font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:1rem}
+.contact-text h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:1rem}
 .contact-text p{color:var(--muted);line-height:1.85;margin-bottom:.75rem;font-size:.95rem}
 .contact-text strong{color:var(--text);font-weight:500}
 .contact-panel{background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);padding:2rem;display:flex;flex-direction:column;gap:.75rem}
@@ -177,69 +175,31 @@ section{padding:6rem 2rem}
 .clink:hover{border-color:var(--blue)}
 .clink-ic{width:38px;height:38px;background:rgba(23,165,230,.1);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .clink-ic i{color:var(--blue)}
-.clink-info{min-width:0;overflow-wrap:anywhere}
 .clink-info span{display:block;font-size:.72rem;color:var(--muted);letter-spacing:.3px}
 .clink-info strong{font-size:.88rem;color:var(--text)}
 .avail-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:#4ADE80;padding:.5rem 1rem;border-radius:6px;font-size:.82rem;margin-bottom:1.25rem}
 .avail-tag::before{content:'';width:7px;height:7px;background:#4ADE80;border-radius:50%;animation:pulse 2s infinite}
 
-/* ——— FOOTER ——— */
 footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem}
 footer a{color:var(--blue);text-decoration:none}
 
-/* ——— FADE IN ——— */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
 .reveal.in{opacity:1;transform:none}
 
-/* ——— RESPONSIVE : tablette / petit desktop ——— */
 @media(max-width:880px){
 .hero-inner{grid-template-columns:1fr}
 .terminal{display:none}
-.projects-grid,.skills-wrap,.edu-grid,.contact-wrap{grid-template-columns:1fr}
+.projects-grid,.skills-wrap,.edu-grid,.contact-wrap,.cert-grid{grid-template-columns:1fr}
 .pcard.wide{grid-column:auto;display:flex;flex-direction:column}
 .xp{grid-template-columns:1fr;gap:.5rem}
 .xp::before,.xp::after{display:none}
 .xp-date{text-align:left;padding:0}
 .nav-links{display:none}
-.nav-burger{display:flex}
-section{padding:4rem 1.5rem}
-.hero{padding:100px 1.5rem 3rem}
-}
-
-/* ——— RESPONSIVE : mobile ——— */
-@media(max-width:480px){
-nav{padding:0 1.25rem}
-.nav-inner{height:56px}
-.nav-cta .btn-ghost{display:none}
-.hero{padding:90px 1.25rem 2.5rem;min-height:auto}
-.hero-name{letter-spacing:-1.5px;margin-bottom:.5rem}
-.hero-eyebrow{font-size:.7rem;padding:.35rem .8rem;margin-bottom:1.25rem}
-.hero-role{font-size:.92rem;margin-bottom:1.5rem}
-.hero-actions{margin-bottom:2rem}
-.hero-actions .btn{flex:1 1 auto;justify-content:center}
-.hero-meta{gap:1.25rem;row-gap:1rem}
-.meta-item .val{font-size:1.25rem}
-.meta-item .lbl{font-size:.68rem}
-section{padding:3.5rem 1.25rem}
-.s-title{margin-bottom:.5rem}
-.s-sub{margin-bottom:2rem}
-.pcard{padding:1.25rem}
-.contact-panel{padding:1.25rem}
-.contact-wrap{gap:2.5rem}
 }
 </style>
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://mirwaiscassart.github.io/portfolio/">
-<meta property="og:title" content="Mirwais Cassart · Administrateur Systèmes & Réseaux">
-<meta property="og:description" content="BTS SIO SISR · Recherche alternance oct. 2026 · Active Directory, Zabbix, VMware, PRA · Lille – Maubeuge">
-<meta property="og:image" content="https://mirwaiscassart.github.io/portfolio/banner-og.png">
-<meta property="og:locale" content="fr_FR">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="nav">
 <div class="nav-inner">
 <a href="#" class="nav-logo">MC<span>.</span></a>
@@ -253,25 +213,14 @@ section{padding:3.5rem 1.25rem}
 <a href="cv-mirwais-cassart.pdf" download class="btn btn-ghost"><i class="fas fa-download"></i> CV</a>
 <a href="#contact" class="btn btn-primary">Me contacter</a>
 </div>
-<button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
-<span></span><span></span><span></span>
-</button>
-</div>
-<div class="nav-mobile-panel" id="navMobilePanel">
-<a href="#projets">Projets</a>
-<a href="#competences">Compétences</a>
-<a href="#experience">Expérience</a>
-<a href="#contact">Contact</a>
-<a href="cv-mirwais-cassart.pdf" download class="btn btn-ghost"><i class="fas fa-download"></i> Télécharger le CV</a>
 </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 <div class="hero-bg"></div>
 <div class="hero-inner">
 <div>
-<div class="hero-eyebrow">Disponible — Alternance Octobre 2026</div>
+<div class="hero-eyebrow">Disponible — Alternance Septembre 2026</div>
 <h1 class="hero-name">
 <span class="first">Mirwais</span>
 <span class="last">Cassart</span>
@@ -283,14 +232,13 @@ section{padding:3.5rem 1.25rem}
 <a href="https://www.linkedin.com/in/mirwaiscassart/" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fab fa-linkedin"></i> LinkedIn</a>
 </div>
 <div class="hero-meta">
-<div class="meta-item"><span class="val">349</span><span class="lbl">postes gérés</span></div>
+<div class="meta-item"><span class="val">350</span><span class="lbl">postes gérés</span></div>
 <div class="meta-item"><span class="val">12</span><span class="lbl">serveurs</span></div>
 <div class="meta-item"><span class="val">7+</span><span class="lbl">expériences</span></div>
 <div class="meta-item"><span class="val">2</span><span class="lbl">certifications</span></div>
 </div>
 </div>
 
-<!-- TERMINAL — signature element (masqué sous 880px) -->
 <div class="terminal">
 <div class="term-bar">
 <div class="term-dot r"></div>
@@ -301,7 +249,7 @@ section{padding:3.5rem 1.25rem}
 <div class="term-body">
 <div><span class="t-prompt">mirwais@infra:~$ </span><span class="t-cmd">ssh admin@apei-dc01.local</span></div>
 <div class="t-out ok">✓ Connected · Windows Server 2019 · AD DS</div>
-<div class="t-out hl">  349 workstations · 12 servers · 2-person IT team</div>
+<div class="t-out hl">  350 workstations · 12 servers · 2-person IT team</div>
 <br>
 <div><span class="t-prompt">mirwais@apei-dc01:~$ </span><span class="t-cmd">cat ./missions.log</span></div>
 <div class="t-out hl">  ► Active Directory hardening (GPO + MFA)</div>
@@ -313,8 +261,8 @@ section{padding:3.5rem 1.25rem}
 <br>
 <div><span class="t-prompt">mirwais@apei-dc01:~$ </span><span class="t-cmd">cat ./alternance.conf</span></div>
 <div class="t-out">  TARGET_SCHOOL="IPSSI Lille — Bachelor SecOps"</div>
-<div class="t-out">  START_DATE="October 2026"</div>
-<div class="t-out">  SCHEDULE="3w/company + 1w/school"</div>
+<div class="t-out">  START_DATE="September 2026"</div>
+<div class="t-out">  SCHEDULE="1w/school + 3w/company"</div>
 <div class="t-out">  ZONE="Lille · Maubeuge · Valenciennes"</div>
 <br>
 <div><span class="t-prompt">mirwais@apei-dc01:~$ </span><span class="t-cursor"></span></div>
@@ -323,14 +271,12 @@ section{padding:3.5rem 1.25rem}
 </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projets" style="background:var(--ink2)">
 <div class="wrap">
 <span class="s-eyebrow reveal">Réalisations</span>
 <h2 class="s-title reveal">Projets <span style="color:var(--blue)">techniques</span></h2>
 <div class="projects-grid">
 
-<!-- FEATURED -->
 <div class="pcard wide reveal">
 <div>
 <div class="pcard-top">
@@ -338,7 +284,7 @@ section{padding:3.5rem 1.25rem}
 <span class="pcard-badge">Projet principal</span>
 </div>
 <h3 class="pcard-title" style="font-size:1.2rem;margin-top:.75rem">Durcissement Active Directory & SecOps</h3>
-<div class="pcard-context">Environnement réel · APEI Les Papillons Blancs · 349 postes · 12 serveurs</div>
+<div class="pcard-context">Environnement réel · APEI Les Papillons Blancs · 350 postes · 12 serveurs</div>
 <p class="pcard-desc" style="margin-top:.75rem">Administration complète et sécurisation d'un Active Directory Windows Server en production, dans une association médico-sociale. Missions menées avec une autonomie croissante entre le 1er et le 2ème stage.</p>
 <div class="ptags">
 <span class="ptag">Active Directory</span><span class="ptag">Windows Server</span><span class="ptag">GPO</span><span class="ptag">MFA</span><span class="ptag">PowerShell</span><span class="ptag">LDAP</span>
@@ -414,49 +360,47 @@ section{padding:3.5rem 1.25rem}
 </div>
 </section>
 
-<!-- GALLERY -->
 <section style="padding:3rem 2rem">
 <div class="wrap">
 <span class="s-eyebrow reveal">En conditions réelles</span>
 <h2 class="s-title reveal">Terrain <span style="color:var(--blue)">APEI</span></h2>
 <p class="s-sub reveal">Quelques captures des missions réalisées en production.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem" class="reveal">
+<div class="gallery-grid reveal">
 
-<figure style="margin:0;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-<img src="rbdhcp.jpg" alt="Raspberry Pi RBDHCP9 en baie réseau" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
-<figcaption style="padding:.75rem 1rem;font-size:.78rem;color:var(--muted)"><i class="fas fa-raspberry-pi" style="color:var(--blue);margin-right:.4rem"></i>Raspberry Pi RBDHCP9 — 172.17.9.241 — déployé en baie réseau</figcaption>
+<figure>
+<img src="rbdhcp.jpg" alt="Raspberry Pi RBDHCP9 en baie réseau">
+<figcaption><i class="fas fa-microchip"></i>Raspberry Pi RBDHCP9 — 172.17.9.241 — déployé en baie réseau</figcaption>
 </figure>
 
-<figure style="margin:0;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-<img src="installation_nas.jpg" alt="Installation NAS Synology RS422+" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
-<figcaption style="padding:.75rem 1rem;font-size:.78rem;color:var(--muted)"><i class="fas fa-hdd" style="color:var(--blue);margin-right:.4rem"></i>Déballage NAS Synology RS422+ avec disques WD Red Pro 2TB</figcaption>
+<figure>
+<img src="installation_nas.jpg" alt="Installation NAS Synology RS422+">
+<figcaption><i class="fas fa-hdd"></i>Déballage NAS Synology RS422+ avec disques WD Red Pro 2TB</figcaption>
 </figure>
 
-<figure style="margin:0;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-<img src="raid10.PNG" alt="Configuration RAID 10 sur Synology" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
-<figcaption style="padding:.75rem 1rem;font-size:.78rem;color:var(--muted)"><i class="fas fa-database" style="color:var(--blue);margin-right:.4rem"></i>Configuration RAID 10 — tolérance pannes / 2 disques</figcaption>
+<figure>
+<img src="raid10.PNG" alt="Configuration RAID 10 sur Synology">
+<figcaption><i class="fas fa-database"></i>Configuration RAID 10 — tolérance pannes / 2 disques</figcaption>
 </figure>
 
-<figure style="margin:0;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-<img src="sauvegardes.PNG" alt="Planification des sauvegardes Synology" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
-<figcaption style="padding:.75rem 1rem;font-size:.78rem;color:var(--muted)"><i class="fas fa-clock" style="color:var(--blue);margin-right:.4rem"></i>Sauvegardes automatisées — 03h00 quotidien, 256 versions, 9 mois</figcaption>
+<figure>
+<img src="sauvegardes.PNG" alt="Planification des sauvegardes Synology">
+<figcaption><i class="fas fa-clock"></i>Sauvegardes automatisées — 03h00 quotidien, 256 versions, 9 mois</figcaption>
 </figure>
 
-<figure style="margin:0;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-<img src="gpo.PNG" alt="GPO restrictions Active Directory" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
-<figcaption style="padding:.75rem 1rem;font-size:.78rem;color:var(--muted)"><i class="fas fa-shield-halved" style="color:var(--blue);margin-right:.4rem"></i>GPO critiques — restrictions panneau de configuration utilisateurs</figcaption>
+<figure>
+<img src="gpo.PNG" alt="GPO restrictions Active Directory">
+<figcaption><i class="fas fa-shield-halved"></i>GPO critiques — restrictions panneau de configuration utilisateurs</figcaption>
 </figure>
 
-<figure style="margin:0;background:var(--ink2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-<img src="zabbix_conf.PNG" alt="Configuration Zabbix agent" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block">
-<figcaption style="padding:.75rem 1rem;font-size:.78rem;color:var(--muted)"><i class="fas fa-eye" style="color:var(--blue);margin-right:.4rem"></i>Configuration agent Zabbix — serveur 172.17.0.227, port 10050</figcaption>
+<figure>
+<img src="zabbix_conf.PNG" alt="Configuration Zabbix agent">
+<figcaption><i class="fas fa-eye"></i>Configuration agent Zabbix — serveur 172.17.0.227, port 10050</figcaption>
 </figure>
 
 </div>
 </div>
 </section>
 
-<!-- SKILLS -->
 <section id="competences">
 <div class="wrap">
 <span class="s-eyebrow reveal">Stack technique</span>
@@ -471,11 +415,9 @@ section{padding:3.5rem 1.25rem}
 <span class="stag hi">GPO · MFA</span>
 <span class="stag hi">Zabbix</span>
 <span class="stag">Linux Ubuntu</span>
-<span class="stag">Kali Linux</span>
-<span class="stag">Metasploit</span>
 <span class="stag">NAS Synology</span>
 <span class="stag">MDT / WDS</span>
-<span class="stag">Wireshark</span>
+<span class="stag">Wireshark (notions)</span>
 </div>
 </div>
 
@@ -483,12 +425,11 @@ section{padding:3.5rem 1.25rem}
 <div class="sg-title"><div class="sg-icon"><i class="fas fa-network-wired"></i></div><h3>Réseaux</h3></div>
 <div class="stags">
 <span class="stag hi">DHCP · DNS</span>
-<span class="stag hi">VLAN · VPN</span>
-<span class="stag">Firewall · DMZ</span>
-<span class="stag">Cisco (PT)</span>
+<span class="stag hi">VLAN · VPN (notions)</span>
+<span class="stag">Firewall (notions)</span>
+<span class="stag">Cisco (Packet Tracer)</span>
 <span class="stag">Routage IPv4/IPv6</span>
 <span class="stag">Wi-Fi (AP config)</span>
-<span class="stag">VoIP</span>
 <span class="stag">RAID</span>
 </div>
 </div>
@@ -499,10 +440,7 @@ section{padding:3.5rem 1.25rem}
 <span class="stag hi">VMware vSphere</span>
 <span class="stag hi">VirtualBox</span>
 <span class="stag">Raspberry Pi</span>
-<span class="stag">OVHcloud</span>
-<span class="stag">AWS Cloud</span>
 <span class="stag">Git · GitHub</span>
-<span class="stag">Supabase</span>
 <span class="stag">MySQL</span>
 </div>
 </div>
@@ -511,9 +449,8 @@ section{padding:3.5rem 1.25rem}
 <div class="sg-title"><div class="sg-icon"><i class="fas fa-terminal"></i></div><h3>Scripting & Outils</h3></div>
 <div class="stags">
 <span class="stag hi">PowerShell</span>
-<span class="stag">Bash</span>
-<span class="stag">Python</span>
-<span class="stag">HTML · CSS</span>
+<span class="stag">Bash (notions)</span>
+<span class="stag">Python (notions)</span>
 <span class="stag">Microsoft 365</span>
 <span class="stag">Trello · Kanban</span>
 <span class="stag">Agile</span>
@@ -523,7 +460,6 @@ section{padding:3.5rem 1.25rem}
 </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience" style="background:var(--ink2)">
 <div class="wrap">
 <span class="s-eyebrow reveal">Parcours</span>
@@ -531,9 +467,9 @@ section{padding:3.5rem 1.25rem}
 <div class="xp-grid">
 
 <div class="xp current reveal">
-<div class="xp-date"><span class="period">Avr. 2026 — auj.</span>3 mois</div>
+<div class="xp-date"><span class="period">Avr. 2026 — auj.</span>4 mois</div>
 <div class="xp-content">
-<div class="xp-role">Médiateur numérique — Service civique</div>
+<div class="xp-role">Médiateur numérique – Service civique</div>
 <div class="xp-company">Efficience Solidaire & Créative</div>
 <div class="xp-loc"><i class="fas fa-map-marker-alt"></i> Maubeuge · Sur site</div>
 <p class="xp-desc">Support N1/N2 et accompagnement numérique auprès de publics variés. Animation d'ateliers, sensibilisation à la cybersécurité, vulgarisation technique.</p>
@@ -546,7 +482,7 @@ section{padding:3.5rem 1.25rem}
 <div class="xp-content">
 <div class="xp-role">Stagiaire Administrateur Systèmes & Réseaux</div>
 <div class="xp-company">APEI — Les Papillons Blancs</div>
-<div class="xp-loc"><i class="fas fa-map-marker-alt"></i> Maubeuge · 349 postes · 12 serveurs</div>
+<div class="xp-loc"><i class="fas fa-map-marker-alt"></i> Maubeuge · 350 postes · 12 serveurs</div>
 <p class="xp-desc">SecOps et automatisation en autonomie : AD hardening, MFA, Zabbix, PRA, scripts PowerShell, configuration réseau complète.</p>
 <div class="xp-tags"><span class="xp-tag">Active Directory</span><span class="xp-tag">MFA</span><span class="xp-tag">Zabbix</span><span class="xp-tag">PowerShell</span><span class="xp-tag">PRA</span></div>
 </div>
@@ -558,8 +494,8 @@ section{padding:3.5rem 1.25rem}
 <div class="xp-role">Stagiaire Administrateur Systèmes & Réseaux</div>
 <div class="xp-company">APEI — Les Papillons Blancs</div>
 <div class="xp-loc"><i class="fas fa-map-marker-alt"></i> Maubeuge · Même infrastructure</div>
-<p class="xp-desc">Infrastructure et déploiement : NAS Synology RS422+, MDT, support N1/N2, inventaire parc, administration AD.</p>
-<div class="xp-tags"><span class="xp-tag">NAS Synology</span><span class="xp-tag">MDT</span><span class="xp-tag">Active Directory</span><span class="xp-tag">Support N1/N2</span></div>
+<p class="xp-desc">Infrastructure et déploiement : NAS Synology RS422+, MDT, support N1/N2, inventaire parc, administration AD, virtualisation VMware/VirtualBox.</p>
+<div class="xp-tags"><span class="xp-tag">NAS Synology</span><span class="xp-tag">MDT</span><span class="xp-tag">Active Directory</span><span class="xp-tag">VMware</span><span class="xp-tag">Support N1/N2</span></div>
 </div>
 </div>
 
@@ -578,7 +514,6 @@ section{padding:3.5rem 1.25rem}
 </div>
 </section>
 
-<!-- EDUCATION -->
 <section>
 <div class="wrap">
 <span class="s-eyebrow reveal">Formation</span>
@@ -589,8 +524,8 @@ section{padding:3.5rem 1.25rem}
 <span class="e-level">Bachelor Bac+3 — En cours de recherche</span>
 <div class="e-title">Administrateur Systèmes, Réseaux & SecOps</div>
 <div class="e-school">IPSSI Lille — Grande École Informatique</div>
-<div class="e-dates">Octobre 2026 — sous réserve d'alternance</div>
-<div class="e-detail">3 sem. entreprise / 1 sem. école. Spécialisation SecOps et administration d'infrastructure.</div>
+<div class="e-dates">Septembre 2026 — sous réserve d'alternance</div>
+<div class="e-detail">1 sem. école / 3 sem. entreprise. Spécialisation SecOps et administration d'infrastructure.</div>
 </div>
 
 <div class="ecard">
@@ -614,45 +549,39 @@ section{padding:3.5rem 1.25rem}
 </div>
 </section>
 
-
-<!-- CERTIFICATIONS -->
 <section style="background:var(--ink2)">
 <div class="wrap">
 <span class="s-eyebrow reveal">Certifications</span>
-<h2 class="s-title reveal">Certifications <span style="color:var(--blue)">officielles</span></h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem" class="reveal">
+<h2 class="s-title reveal">Certifications officielles</h2>
+<div class="cert-grid reveal">
 
-<div style="background:var(--ink3);border:1px solid rgba(23,165,230,.35);border-radius:var(--r);padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div style="width:48px;height:48px;background:rgba(23,165,230,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-<i class="fas fa-shield-halved" style="color:var(--blue);font-size:1.2rem"></i>
-</div>
+<div class="ccard">
+<div class="ccard-icon"><i class="fas fa-shield-halved"></i></div>
 <div>
-<div style="font-family:JetBrains Mono,monospace;font-size:.7rem;color:var(--blue);letter-spacing:1px;margin-bottom:.3rem">ANSSI · Mars 2024</div>
-<div style="font-family:Syne,sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:.4rem">MOOC SecNumacadémie</div>
-<div style="color:var(--muted);font-size:.82rem;line-height:1.7;margin-bottom:.75rem">4 modules validés · Panorama SSI · Sécurité de l'authentification · Sécurité sur Internet · Sécurité du poste de travail</div>
-<div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem">
-<span style="font-family:JetBrains Mono,monospace;font-size:.7rem;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:#4ADE80;padding:.2rem .6rem;border-radius:4px">88% · Panorama SSI</span>
-<span style="font-family:JetBrains Mono,monospace;font-size:.7rem;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:#4ADE80;padding:.2rem .6rem;border-radius:4px">80% · Authentification</span>
-<span style="font-family:JetBrains Mono,monospace;font-size:.7rem;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:#4ADE80;padding:.2rem .6rem;border-radius:4px">88% · Sécurité Internet</span>
-<span style="font-family:JetBrains Mono,monospace;font-size:.7rem;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:#4ADE80;padding:.2rem .6rem;border-radius:4px">88% · Poste de travail</span>
+<div class="ccard-org">ANSSI · Mars 2024</div>
+<div class="ccard-title">MOOC SecNumacadémie</div>
+<div class="ccard-desc">4 modules validés · Panorama SSI · Sécurité de l'authentification · Sécurité sur Internet · Sécurité du poste de travail</div>
+<div class="ccard-tags">
+<span class="ctag">88% Panorama SSI</span>
+<span class="ctag">80% Authentification</span>
+<span class="ctag">88% Sécurité Internet</span>
+<span class="ctag">88% Poste de travail</span>
 </div>
-<a href="SecNum_academie.pdf" target="_blank" style="color:var(--blue);font-size:.8rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem"><i class="fas fa-file-pdf"></i> Voir l'attestation</a>
+<a href="SecNum_academie.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Voir l'attestation</a>
 </div>
 </div>
 
-<div style="background:var(--ink3);border:1px solid rgba(23,165,230,.35);border-radius:var(--r);padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div style="width:48px;height:48px;background:rgba(23,165,230,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-<i class="fas fa-certificate" style="color:var(--blue);font-size:1.2rem"></i>
-</div>
+<div class="ccard">
+<div class="ccard-icon"><i class="fas fa-certificate"></i></div>
 <div>
-<div style="font-family:JetBrains Mono,monospace;font-size:.7rem;color:var(--blue);letter-spacing:1px;margin-bottom:.3rem">GIP Pix · Mars 2025</div>
-<div style="font-family:Syne,sans-serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:.4rem">Certification Pix — Niveau Avancé 1</div>
-<div style="color:var(--muted);font-size:.82rem;line-height:1.7;margin-bottom:.75rem">Score 565/895 · Lycée Henri Wallon · Pratiques numériques avancées, mise en place d'environnements numériques, enjeux sécurité et données</div>
-<div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem">
-<span style="font-family:JetBrains Mono,monospace;font-size:.7rem;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);color:#4ADE80;padding:.2rem .6rem;border-radius:4px">565 / 895 pts</span>
-<span style="font-family:JetBrains Mono,monospace;font-size:.7rem;background:rgba(23,165,230,.08);border:1px solid rgba(23,165,230,.2);color:var(--blue);padding:.2rem .6rem;border-radius:4px">Code : P-QRVXMBGW</span>
+<div class="ccard-org">GIP Pix · Mars 2025</div>
+<div class="ccard-title">Certification Pix — Niveau Avancé 1</div>
+<div class="ccard-desc">Score 565/895 · Lycée Henri Wallon · Pratiques numériques avancées, mise en place d'environnements numériques, enjeux sécurité et données</div>
+<div class="ccard-tags">
+<span class="ctag blue">565 / 895 pts</span>
+<span class="ctag blue">Code : P-QRVXMBGW</span>
 </div>
-<a href="certification-pix.pdf" target="_blank" style="color:var(--blue);font-size:.8rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem"><i class="fas fa-file-pdf"></i> Voir la certification</a>
+<a href="certification-pix.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Voir la certification</a>
 </div>
 </div>
 
@@ -660,15 +589,14 @@ section{padding:3.5rem 1.25rem}
 </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" style="background:var(--ink2)">
+<section id="contact">
 <div class="wrap">
 <div class="contact-wrap">
 <div class="contact-text">
 <span class="s-eyebrow reveal">Contact</span>
 <h2 class="reveal">Recrutons<br><span style="color:var(--blue)">ensemble.</span></h2>
-<p class="reveal">Je recherche une <strong>alternance en administration systèmes & réseaux</strong> pour intégrer le Bachelor SecOps à l'IPSSI de Lille en <strong>octobre 2026</strong>.</p>
-<p class="reveal">Secteur : <strong>Lille · Maubeuge · Valenciennes</strong><br>Rythme : <strong>3 semaines entreprise / 1 semaine école</strong><br>Modes : <strong>sur site, hybride ou remote</strong></p>
+<p class="reveal">Je recherche une <strong>alternance en administration systèmes & réseaux</strong> pour intégrer le Bachelor SecOps à l'IPSSI de Lille en <strong>septembre 2026</strong>.</p>
+<p class="reveal">Secteur : <strong>Lille · Maubeuge · Valenciennes</strong>, également ouvert à l'<strong>Île-de-France</strong><br>Rythme : <strong>1 semaine école / 3 semaines entreprise</strong><br>Modes : <strong>sur site, hybride ou remote</strong></p>
 <div class="avail-tag reveal">Disponible pour entretien immédiatement</div>
 </div>
 <div class="contact-panel reveal">
@@ -702,29 +630,10 @@ section{padding:3.5rem 1.25rem}
 </footer>
 
 <script>
-// Nav scroll effect
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{
 nav.classList.toggle('scrolled',window.scrollY>30);
 });
-
-// Nav burger (mobile menu)
-const burger=document.getElementById('navBurger');
-const mobilePanel=document.getElementById('navMobilePanel');
-burger.addEventListener('click',()=>{
-const isOpen=mobilePanel.classList.toggle('open');
-burger.classList.toggle('open',isOpen);
-burger.setAttribute('aria-expanded',isOpen);
-});
-mobilePanel.querySelectorAll('a').forEach(a=>{
-a.addEventListener('click',()=>{
-mobilePanel.classList.remove('open');
-burger.classList.remove('open');
-burger.setAttribute('aria-expanded','false');
-});
-});
-
-// Scroll reveal
 const obs=new IntersectionObserver(entries=>{
 entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
 },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
