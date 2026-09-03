@@ -3,6 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--
+  CSP volontairement livrée en <meta> : le site est statique sur GitHub Pages,
+  qui ne permet pas de définir des en-têtes HTTP personnalisés. Une balise
+  <meta http-equiv> ne supporte pas frame-ancestors / report-uri / sandbox
+  (ignorés par les navigateurs si présents) : la protection anti-clickjacking
+  (frame-ancestors / X-Frame-Options) nécessiterait un en-tête HTTP, donc un
+  hébergement avec contrôle serveur.
+  script-src autorise les 2 <script> inline via leur hash SHA-256 exact
+  (pas de 'unsafe-inline') : toute injection de script differente est bloquée.
+  style-src garde 'unsafe-inline' car le balisage utilise de nombreux
+  attributs style="" ponctuels ; les retirer nécessiterait de les convertir
+  en classes CSS (hors périmètre ici).
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-/u/6UiNrLPng6pZKLEoe/+PqagJsjVl4EVwvYDGOe98=' 'sha256-E5vwBZY6eON9tvwey2iygy2Lh4AwUxMLNn9qp6tLuN0='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+
 <meta name="description" content="Mirwais Cassart — Administrateur Systèmes & Réseaux. BTS SIO SISR. Recherche alternance Septembre 2026 — Lille, Maubeuge.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://mirwaiscassart.github.io/portfolio/">
@@ -76,8 +92,17 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!--
+  Pas de SRI sur ce fichier Google Fonts : son contenu est negocie par
+  User-Agent (Chrome, Firefox et les anciens navigateurs recoivent des
+  reponses differentes - woff2 subdivise par langue vs ttf simple pour
+  Chrome vs Safari ancien, verifie manuellement). Un hash fige casserait
+  le chargement des polices pour la plupart des visiteurs. La CSP
+  (style-src / font-src) restreint deja ce chargement aux domaines Google
+  Fonts officiels, ce qui est le controle pertinent ici.
+-->
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha384-/o6I2CkkWC//PSjvWC/eYN7l3xM3tJm8ZzVkCOfp//W05QcE3mlGskpoHB6XqI+B" crossorigin="anonymous" referrerpolicy="no-referrer">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
