@@ -4,14 +4,76 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Mirwais Cassart — Administrateur Systèmes & Réseaux. BTS SIO SISR. Recherche alternance Septembre 2026 — Lille, Maubeuge.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mirwaiscassart.github.io/portfolio/">
+<meta name="theme-color" content="#060F1A">
 <title>Mirwais Cassart · Admin Sys & Réseaux</title>
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
 <meta property="og:title" content="Mirwais Cassart · Administrateur Systèmes & Réseaux">
 <meta property="og:description" content="BTS SIO SISR · Recherche alternance sept. 2026 · Active Directory, Zabbix, VMware, PRA · Lille – Maubeuge">
 <meta property="og:image" content="https://mirwaiscassart.github.io/portfolio/banner-og.png">
+<meta property="og:image:width" content="1400">
+<meta property="og:image:height" content="349">
+<meta property="og:image:alt" content="Mirwais Cassart — Administrateur Systèmes & Réseaux, disponible pour une alternance en septembre 2026">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://mirwaiscassart.github.io/portfolio/">
+<meta property="og:site_name" content="Mirwais Cassart · Portfolio">
+
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mirwais Cassart · Administrateur Systèmes & Réseaux">
+<meta name="twitter:description" content="BTS SIO SISR · Recherche alternance sept. 2026 · Active Directory, Zabbix, VMware, PRA · Lille – Maubeuge">
+<meta name="twitter:image" content="https://mirwaiscassart.github.io/portfolio/banner-og.png">
+<meta name="twitter:image:alt" content="Mirwais Cassart — Administrateur Systèmes & Réseaux, disponible pour une alternance en septembre 2026">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mirwais Cassart",
+  "givenName": "Mirwais",
+  "familyName": "Cassart",
+  "url": "https://mirwaiscassart.github.io/portfolio/",
+  "jobTitle": "Administrateur Systèmes & Réseaux",
+  "description": "Administrateur Systèmes & Réseaux (BTS SIO SISR), en recherche d'une alternance à partir de septembre 2026 pour intégrer le Bachelor Administrateur Systèmes, Réseaux & SecOps de l'IPSSI Lille.",
+  "email": "mailto:mirwais.cassart@gmail.com",
+  "telephone": "+33782598515",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Hauts-de-France",
+    "addressCountry": "FR"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/mirwaiscassart/",
+    "https://github.com/MirwaisCassart"
+  ],
+  "alumniOf": [
+    {
+      "@type": "EducationalOrganization",
+      "name": "Lycée Henri Wallon (BTS SIO SISR)"
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "Lycée Théophile Legrand (Bac Pro Systèmes Numériques)"
+    }
+  ],
+  "knowsAbout": [
+    "Active Directory", "Windows Server", "GPO", "MFA", "Zabbix",
+    "PowerShell", "VMware vSphere", "NAS Synology", "RAID",
+    "Plan de Reprise d'Activité", "DHCP", "DNS", "SecOps"
+  ],
+  "seeks": {
+    "@type": "Demand",
+    "name": "Contrat d'alternance — Administrateur Systèmes, Réseaux & SecOps",
+    "availabilityStarts": "2026-09-01",
+    "areaServed": ["Lille", "Maubeuge", "Valenciennes", "Île-de-France"]
+  }
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -25,7 +87,7 @@
 --blue: #17A5E6;
 --blue-dim: #0E7AB0;
 --text: #C8DFF0;
---muted: #4D6B84;
+--muted: #7391A8; /* WCAG AA: >=4.5:1 sur --ink, --ink2 et --ink3 (pire cas : tags sur --ink3 = 4.84:1) */
 --border: #152D47;
 --r: 10px;
 }
@@ -188,7 +250,8 @@ footer a{color:var(--blue);text-decoration:none}
 
 @media(max-width:880px){
 .hero-inner{grid-template-columns:1fr}
-.terminal{display:none}
+.terminal{font-size:.78rem;width:100%}
+.term-body{padding:1rem 1.1rem}
 .projects-grid,.skills-wrap,.edu-grid,.contact-wrap,.cert-grid{grid-template-columns:1fr}
 .pcard.wide{grid-column:auto;display:flex;flex-direction:column}
 .xp{grid-template-columns:1fr;gap:.5rem}
@@ -196,11 +259,23 @@ footer a{color:var(--blue);text-decoration:none}
 .xp-date{text-align:left;padding:0}
 .nav-links{display:none}
 }
+
+@media(max-width:480px){
+.term-body{padding:.85rem .9rem;font-size:.72rem;gap:.15rem}
+.term-title{font-size:.68rem}
+.hero-meta{gap:1.25rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+.hero-eyebrow::before,.avail-tag::before,.t-cursor{animation:none}
+.reveal{opacity:1;transform:none;transition:none}
+}
 </style>
 </head>
 <body>
 
-<nav id="nav">
+<nav id="nav" aria-label="Navigation principale">
 <div class="nav-inner">
 <a href="#" class="nav-logo">MC<span>.</span></a>
 <ul class="nav-links">
@@ -216,12 +291,14 @@ footer a{color:var(--blue);text-decoration:none}
 </div>
 </nav>
 
-<section class="hero">
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-heading">
 <div class="hero-bg"></div>
 <div class="hero-inner">
 <div>
 <div class="hero-eyebrow">Disponible — Alternance Septembre 2026</div>
-<h1 class="hero-name">
+<h1 class="hero-name" id="hero-heading">
 <span class="first">Mirwais</span>
 <span class="last">Cassart</span>
 </h1>
@@ -271,10 +348,10 @@ footer a{color:var(--blue);text-decoration:none}
 </div>
 </section>
 
-<section id="projets" style="background:var(--ink2)">
+<section id="projets" style="background:var(--ink2)" aria-labelledby="projets-heading">
 <div class="wrap">
 <span class="s-eyebrow reveal">Réalisations</span>
-<h2 class="s-title reveal">Projets <span style="color:var(--blue)">techniques</span></h2>
+<h2 class="s-title reveal" id="projets-heading">Projets <span style="color:var(--blue)">techniques</span></h2>
 <div class="projects-grid">
 
 <div class="pcard wide reveal">
@@ -360,10 +437,10 @@ footer a{color:var(--blue);text-decoration:none}
 </div>
 </section>
 
-<section style="padding:3rem 2rem">
+<section id="galerie" style="padding:3rem 2rem" aria-labelledby="galerie-heading">
 <div class="wrap">
 <span class="s-eyebrow reveal">En conditions réelles</span>
-<h2 class="s-title reveal">Terrain <span style="color:var(--blue)">APEI</span></h2>
+<h2 class="s-title reveal" id="galerie-heading">Terrain <span style="color:var(--blue)">APEI</span></h2>
 <p class="s-sub reveal">Quelques captures des missions réalisées en production.</p>
 <div class="gallery-grid reveal">
 
@@ -401,10 +478,10 @@ footer a{color:var(--blue);text-decoration:none}
 </div>
 </section>
 
-<section id="competences">
+<section id="competences" aria-labelledby="competences-heading">
 <div class="wrap">
 <span class="s-eyebrow reveal">Stack technique</span>
-<h2 class="s-title reveal">Compétences</h2>
+<h2 class="s-title reveal" id="competences-heading">Compétences</h2>
 <div class="skills-wrap reveal">
 
 <div class="skill-group">
@@ -460,10 +537,10 @@ footer a{color:var(--blue);text-decoration:none}
 </div>
 </section>
 
-<section id="experience" style="background:var(--ink2)">
+<section id="experience" style="background:var(--ink2)" aria-labelledby="experience-heading">
 <div class="wrap">
 <span class="s-eyebrow reveal">Parcours</span>
-<h2 class="s-title reveal">Expérience terrain</h2>
+<h2 class="s-title reveal" id="experience-heading">Expérience terrain</h2>
 <div class="xp-grid">
 
 <div class="xp current reveal">
@@ -514,10 +591,10 @@ footer a{color:var(--blue);text-decoration:none}
 </div>
 </section>
 
-<section>
+<section id="formation" aria-labelledby="formation-heading">
 <div class="wrap">
 <span class="s-eyebrow reveal">Formation</span>
-<h2 class="s-title reveal">Diplômes</h2>
+<h2 class="s-title reveal" id="formation-heading">Diplômes</h2>
 <div class="edu-grid reveal">
 
 <div class="ecard accent">
@@ -549,10 +626,10 @@ footer a{color:var(--blue);text-decoration:none}
 </div>
 </section>
 
-<section style="background:var(--ink2)">
+<section id="certifications" style="background:var(--ink2)" aria-labelledby="certifications-heading">
 <div class="wrap">
 <span class="s-eyebrow reveal">Certifications</span>
-<h2 class="s-title reveal">Certifications officielles</h2>
+<h2 class="s-title reveal" id="certifications-heading">Certifications officielles</h2>
 <div class="cert-grid reveal">
 
 <div class="ccard">
@@ -589,12 +666,12 @@ footer a{color:var(--blue);text-decoration:none}
 </div>
 </section>
 
-<section id="contact">
+<section id="contact" aria-labelledby="contact-heading">
 <div class="wrap">
 <div class="contact-wrap">
 <div class="contact-text">
 <span class="s-eyebrow reveal">Contact</span>
-<h2 class="reveal">Recrutons<br><span style="color:var(--blue)">ensemble.</span></h2>
+<h2 class="reveal" id="contact-heading">Recrutons<br><span style="color:var(--blue)">ensemble.</span></h2>
 <p class="reveal">Je recherche une <strong>alternance en administration systèmes & réseaux</strong> pour intégrer le Bachelor SecOps à l'IPSSI de Lille en <strong>septembre 2026</strong>.</p>
 <p class="reveal">Secteur : <strong>Lille · Maubeuge · Valenciennes</strong>, également ouvert à l'<strong>Île-de-France</strong><br>Rythme : <strong>1 semaine école / 3 semaines entreprise</strong><br>Modes : <strong>sur site, hybride ou remote</strong></p>
 <div class="avail-tag reveal">Disponible pour entretien immédiatement</div>
@@ -624,6 +701,8 @@ footer a{color:var(--blue);text-decoration:none}
 </div>
 </div>
 </section>
+
+</main>
 
 <footer>
 <p>© 2026 Mirwais Cassart · <a href="https://www.linkedin.com/in/mirwaiscassart/">LinkedIn</a> · <a href="https://github.com/MirwaisCassart">GitHub</a></p>
